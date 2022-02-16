@@ -1,4 +1,7 @@
 <?php
+
+use App\Http\Controllers\ControllerUserman;
+use App\UserMan;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +35,8 @@ Route::get('/user', function () {
     return view('userman',[
         "menu1" => "Beranda",
         "menu2" => "User Management",
-        "title" => "Management User"
+        "title" => "Management User",
+        "userman" => UserMan::all()
     ]);
 });
 
@@ -78,4 +82,19 @@ Route::get('/report_keluar', function () {
         "title" => "Dana Keluar"
     ]);
 });
+
+
+Route::post('/add_userman',[
+    ControllerUserman::class,'store'
+]);
+
+Route::post('/del_userman',[
+    ControllerUserman::class,'hapus'
+]);
+
+
+
+// Route::post('/add_userman',[ControllerUserman::class,'store']);
+// Route::post('/login-userman',[ControllerUserman::class,'login']);
+// Route::post('/coba',[ControllerUserman::class,'login']);
 
