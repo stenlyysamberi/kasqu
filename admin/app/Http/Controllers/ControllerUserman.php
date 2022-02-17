@@ -27,6 +27,24 @@ class ControllerUserman extends Controller
         }
     }
 
+    public function edit(Request $request){
+
+     
+        $request->validate([
+            'user_id' => 'required',
+            'nama' => 'required',
+            'phone' => 'required',
+            'alamat' => 'required',
+            'nip' => 'required',
+            'jenis_kelamin' => 'required',
+            'level' => 'required'
+        ]);
+
+      UserMan::find($request->user_id)->update($request->all());
+      $request->session()->flash("user", "update has been created!");
+      return redirect('/user');
+    }
+
     public function hapus(Request $request){
       
         UserMan::find($request->id)->delete();

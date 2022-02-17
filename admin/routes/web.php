@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ControllerPemasukan;
 use App\Http\Controllers\ControllerUserman;
 use App\UserMan;
 use Illuminate\Support\Facades\Route;
@@ -40,13 +41,7 @@ Route::get('/user', function () {
     ]);
 });
 
-Route::get('/masuk', function () {
-    return view('pemasukan',[
-        "menu1" => "Beranda",
-        "menu2" => "Pemasukan",
-        "title" => "Pemasukan"
-    ]);
-});
+Route::get('/masuk',[ControllerPemasukan::class,'index']);
 
 Route::get('/keluar', function () {
     return view('pengeluaran',[
@@ -90,6 +85,10 @@ Route::post('/add_userman',[
 
 Route::post('/del_userman',[
     ControllerUserman::class,'hapus'
+]);
+
+Route::post('/edit_userman',[
+    ControllerUserman::class,'edit'
 ]);
 
 

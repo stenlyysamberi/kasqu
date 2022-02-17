@@ -40,7 +40,7 @@
                     <div class="text-lg-right mt-3 mt-lg-0">
                         <button type="button" class="btn btn-success waves-effect waves-light mr-1"><i class="mdi mdi-cog"></i></button>
 
-                        <a data-toggle="modal" data-target="#AddBarcode" href="#" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-plus-circle mr-1"></i> New Product</a>
+                        <a data-toggle="modal" data-target="#AddMoney" href="#" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-plus-circle mr-1"></i>Bayar Kas</a>
                     </div>
                 </div><!-- end col-->
             </div> <!-- end row -->
@@ -48,179 +48,144 @@
     </div> <!-- end col-->
 </div>
 
-{{-- <div class="row">
-    @foreach ($produk as $item)
-    <div class="col-md-6 col-xl-3">
-        <div class="card-box product-box">
+<div class="row">
+    <div class="col-12">
+       <div class="card-box">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Nama Usaha</th>
+                  <th scope="col">Waktu Pembayaraan</th>
+                  <th scope="col">Nama Owner/Kabag</th>
+                  <th scope="col">Jumlah Pemasukan</th>
+                  <th scope="col">Options</th>
+                </tr>
+              </thead>
 
-            <div class="product-action">
-                <a href="javascript: void(0);" class="btn btn-success btn-xs waves-effect waves-light"><i class="mdi mdi-pencil"></i></a>
-                <form action="/produk_del/{{ $item->id_produk }}" method="post">
-                    @csrf
-                    @method('delete')
-                    <button onclick="return confirm('apakah Anda akan menghapus data ini?')" href="#" class="btn btn-danger btn-xs waves-effect waves-light"><i class="mdi mdi-close"></i></button>
-
-                </form>
-            </div>
-
-            <div class="bg-light">
-                <img src="{{ asset('storage/' . $item->img) }}" alt="product-pic" class="img-fluid">
-            </div>
-
-            <div class="product-info">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <h5 class="font-16 mt-0 sp-line-1"><a href="ecommerce-product-detail.html" class="text-dark">{{ $item->nama }}</a> </h5>
-                        <div class="text-warning mb-2 font-13">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
+              <tbody>
+                @foreach ($kasmasuk as $item)
+                <tr>
+                    <th scope="row"> {{ $loop->iteration }}</th>
+                    <td>{{ $item->mitra_id }}</td>
+                    <td>{{ $item->tanggal_masuk }}</td>
+                    <td>{{ $item->user_id }}</td>
+                    <td>{{ $item->jumlah_pemasukan }}</td>
+               
+                    <td>
+                        <div class="row">
+                            <div class="btn-group">
+                                <a data-toggle="modal" data-target="#edit_userman{{ $item->user_id }}" href="#" class="btn btn-secondary btn-sm"> <i class="fas fa-edit"></i></a>
+                               
+                               
+                                <form action="/del_userman" method="post">
+                                    @csrf
+                                    <input hidden type="text" name="id" value="{{ $item->user_id }}">
+                                    <button onclick="return confirm('apakah Anda akan menghapus data ini?')" class="btn btn-danger btn-sm"><i class="fas fa-trash" aria-hidden="true"></i></button>
+                                </form>
+                            </div>
                         </div>
-                        <h5 class="m-0"> <span class="text-muted"> Stocks : {{ $item->qty }}</span></h5>
+                    </td>
+
+
+                  
+                    
                     </div>
-                    <div class="col-auto">
-                        <div class="product-price-tag">
-                            $49
-                        </div>
-                    </div>
-                </div> <!-- end row -->
-            </div> <!-- end product info-->
-        </div> <!-- end card-box-->
-    </div> <!-- end col-->
-    @endforeach
-</div> --}}
+                    
+                    </form>
+
+                    {{-- End Blok Edit Userman --}}
+
+                  </tr>
+                @endforeach
+              </tbody>
+             
+        </table>
+       </div>
+    </div>
+
+</div>
 
 
 {{-- Section Modal add --}}
-{{-- <form method="POST" action="/create_produk" enctype="multipart/form-data">
+<form method="POST" action="/tamba_kas" enctype="multipart/form-data">
     @csrf
-    <div id="AddBarcode" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-
-
+    <div id="AddMoney" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
 
-                    <h4 class="modal-title">Add</h4>
+                    <h4 class="modal-title">Tamba Kas Masuk</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body p-4">
 
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                Baru
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link active">
-                               Petunjuk
-                           </a>
-                       </li>
 
-                   </ul>
+                   <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="field-3" class="control-label">Nama Pemilik</label>
 
-
-                   <div class="tab-content">
-                    <div class="tab-pane" id="home">
-
-                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="field-3" class="control-label">Barcode</label>
-                                <input onchange="tampil();" type="text" name="barcode" required="required" class="form-control" id="barcode" placeholder="Enter Text">
-
-                               
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="field-3" class="control-label">Products Name</label>
-                                <input type="text" maxlength="30" name="nama" required="required" class="form-control" id="field-3" placeholder="Enter Text">
-                            </div>
+                            <select name="nama" id="" class="form-control">
+                                <option value="">pilih</option>
+                                @foreach ($userman as $item)
+                                <option value="{{ $item->user_id }}">{{ $item->nama }}</option>
+                                @endforeach
+                            </select>
+                            
+                            {{-- <input type="text" required name="nama"  class="form-control" id="field-3" placeholder="Nama Lengkap"> --}}
                         </div>
                     </div>
+                </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="field-3" class="control-label">Satuan Produk</label>
-                                <select name="id_satuan" class="form-control">
-                                 @foreach ($jenis as $item)
-                                     <option value="{{ $item->id_jenis }}">
-                                        {{ $item->nama }}
-                                     </option>
-                                 @endforeach
-                                </select>
-                            </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="field-3" class="control-label">Jumlah Masuk</label>
+                            <input type="text" name="nip" required="required" class="form-control" id="field-3" placeholder="No. Pegawai">
                         </div>
                     </div>
+                </div>
+               
+                
+                
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="field-3" class="control-label">quantity</label>
-                                <input type="number"  maxlength="30" name="qty"  class="form-control" id="field-3" placeholder="Enter Text">
-                            </div>
+            
+
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group no-margin">
+                            <label for="field-7" class="control-label">Keterangan</label>
+                            <textarea name="alamat" required="required" class="form-control" id="field-7" placeholder="Enter Text"></textarea>
                         </div>
+                        
                     </div>
+                </div>
 
+                <div class="row">
+                    <div class="col-md-12">
 
+                         <h4 class="header-title">Image Profil</h4>
+                        <p class="sub-header">
+                           Set your Profil Image.
+                        </p>
 
-                    <div class="row">
-                        <div class="col-md-12">
-
-                         <h4 class="header-title">Image</h4>
-                         <p class="sub-header">
-                           Set your Image.
-                       </p>
-
-                       <input type="file" required="required" name="img" class="form-control" width="100" />
-
-                   </div>
-               </div>
-
-           </div>
-
-           <div class="tab-pane show active" id="profile">
-        <p>1. Pastikan perangkat mobile sudah terhubung dalam satu network.</p>
-        <p>2. Pada saat pengambilan foto produk, pastika resize rasio diubah menjadi 1:1px.</p>
-        <p>3. Sebelum simpan pastikan semua form input sudah terisi.</p>
-        <p>4. Klik Simpan.</p>
+                        <input type="file" name="image" class="form-control" width="100" />
+                        
+                    </div>
+            </div>
         </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-info waves-effect waves-light">Ok, Simpan</button>
+        </div>
+
+
+
     </div>
 
-
-    <script type="text/javascript">
-        function tampil(){
-            var cek = document.getElementsById('barcode').value;
-            document.getElementsById('result').value = cek;
-
-        }
-    </script>
-
-
-
-
-
-
-</div> --}}
-<div class="modal-footer">
-    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
-    <button type="submit" class="btn btn-info waves-effect waves-light">Ok, Simpan</button>
-</div>
-
-</div>
-</div>
-
-</div>
 
 </form>
 @endsection
