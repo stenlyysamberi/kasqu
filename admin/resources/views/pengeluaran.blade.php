@@ -1,300 +1,239 @@
-@extends('admin.index')
-
+@extends('main.index')
 @section('menu')
-<div class="row">
+     <!-- start page title -->
+ <div class="row">
     <div class="col-12">
         <div class="page-title-box">
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="javascript: void(0);">{{ $menu1 }}</a></li>
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">{{ $menu2 }}</a></li>
-                    <li class="breadcrumb-item active">{{ $menu3 }}</li>
+                    <li class="breadcrumb-item active">{{ $menu2 }}</li>
                 </ol>
             </div>
-            <h4 class="page-title">My Dokter</h4>
+            <h4 class="page-title">Dashboard</h4>
         </div>
     </div>
+</div>     
+<!-- end page title --> 
+
+@if (session('masuk'))
+<div class="alert alert-success" role="alert">
+    <i class="mdi mdi-check-all mr-2"></i>  {{ session('masuk') }}
 </div>
-
-@if (session('user'))
-
-      <div class="alert alert-success" role="alert">
-        <i class="mdi mdi-check-all mr-2"></i>  {{ session('user') }}
-    </div>
 @endif
 
 <div class="row">
     <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="row mb-2">
-                    <div class="col-sm-4">
-                        <a data-toggle="modal" data-target="#add-dokter" href="javascript:void(0);" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle mr-2"></i> Add Docter</a>
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="text-sm-right">
-                            <button type="button" class="btn btn-success mb-2 mr-1"><i class="mdi mdi-cog"></i></button>
-                            <button type="button" class="btn btn-light mb-2 mr-1">Import</button>
-                            <button type="button" class="btn btn-light mb-2">Export</button>
-                        </div>
-                    </div><!-- end col-->
-                </div>
-
-                <div class="table-responsive">
-                    <table class="table table-centered table-striped dt-responsive nowrap w-100" id="products-datatable">
-                        <thead>
-                            <tr>
-                                <th style="width: 20px;">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">&nbsp;</label>
-                                    </div>
-                                </th>
-                                <th>Customer</th>
-                                <th>Phone</th>
-                                <th>Level </th>
-                                <th>Address</th>
-                                <th>Created at</th>
-                                <th>Status</th>
-                                <th style="width: 75px;">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            @foreach ($dokter as $item)
-
-                            <tr>
-                                <td>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck4">
-                                        <label class="custom-control-label" for="customCheck4">&nbsp;</label>
-                                    </div>
-                                </td>
-                                <td class="table-user">
-                                    <img src="{{ asset('storage/' . $item->image) }}" alt="table-user" class="mr-2 rounded-circle">
-                                    <a href="javascript:void(0);" class="text-body font-weight-semibold">{{ $item->nama }}</a>
-                                </td>
-                                <td>
-                                    {{ $item-> phone }}
-                                </td>
-                                <td>
-                                    {{ $item->level }}
-                                </td>
-                                <td>
-                                    {{ $item->remember_token }}
-                                </td>
-                                <td>{{ $item->created_at }}</td>
-                                <td>
-                                    <span class="badge badge-soft-success">Aktif</span>
-                                </td>
-
-                                <td>
-                                    <a data-toggle="modal" data-target="#put-dokter{{ $item->id }}" href="#" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                    
-                                    <form action="/del_dok/{{ $item->id }}" method="post">
-                                      
-                                        @csrf
-                                       
-                                      
-                                        <button onclick="return confirm('Are you sure?')" class="action-icon border-0"><i class="mdi mdi-delete"></i></button>
-                                    </form>
-                                    
-                                </td>
-                            </tr>
-
-                            {{-- add form model --}}
-
-<form enctype="multipart/form-data" method="POST" action="/put_dokter/{{ $item->id }}">
-    
-    @csrf
-   
-
-    <div id="put-dokter{{ $item->id }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-
-
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-
-                    <h4 class="modal-title">Edit Doctor</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body p-4">
-
-
-                   <div class="row">
-                    <div class="col-md-12">
+        <div class="card-box">
+            <div class="row">
+                <div class="col-lg-8">
+                    <form method="POST" class="form-inline" action="#">
                         <div class="form-group">
-                            <label for="field-3" class="control-label">Nama Lengkap</label>
-                            <input type="text" value="{{ $item->nama }}" name="nama"  class="form-control" id="field-3" placeholder="Nama Lengkap">
+                            <label for="inputPassword2" class="sr-only">Search</label>
+                            <input type="search" name="keyword" class="form-control" id="inputPassword2" placeholder="Search...">
                         </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="field-3" class="control-label">Username</label>
-                            <input type="text" value="{{ $item->username }}" name="username" required="required" class="form-control" id="field-3" placeholder="Username">
-                        </div>
-                    </div>
-                </div>
-               
-
-               
-                
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="field-1" class="control-label">Phone</label>
-                            <input value="{{ $item->phone }}" type="text" maxlength="12" name="phone" class="form-control" id="field-1" required="required" placeholder="+62">
-                        </div>
-                    </div>
-                   
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="field-2"  class="control-label">Level</label>
-                            <select name="level" required="required" class="form-control">
-                                <option value="">Pilih</option>
-                                <option value="admin">Admin</option>
-                                <option value="dokter">Dokter</option>
-                                <option value="ceo">CEO</option>
+                        <div class="form-group mx-sm-3">
+                            <label for="status-select" class="mr-2">Sort By</label>
+                            <select class="custom-select" id="status-select">
+                                <option selected="">Semua</option>
                                
+                                
                             </select>
                         </div>
-                    </div>
+                    </form>
                 </div>
+                <div class="col-lg-4">
+                    <div class="text-lg-right mt-3 mt-lg-0">
+                        <button type="button" class="btn btn-success waves-effect waves-light mr-1"><i class="mdi mdi-cog"></i></button>
 
-                
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group no-margin">
-                            <label for="field-7" class="control-label">Alamat Rumah</label>
-                            <textarea name="remember_token" required="required" class="form-control" id="field-7" placeholder="Enter Text">{{ $item->remember_token }}</textarea>
+                        <a data-toggle="modal" data-target="#AddMoney" href="#" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-plus-circle mr-1"></i>Bayar Kas</a>
+                    </div>
+                </div><!-- end col-->
+            </div> <!-- end row -->
+        </div> <!-- end card-box -->
+    </div> <!-- end col-->
+</div>
+
+<div class="row">
+    <div class="col-12">
+       <div class="card-box">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Nama Usaha</th>
+                  <th scope="col">Waktu Pembayaraan</th>
+                  <th scope="col">Nama Owner/Kabag</th>
+                  <th scope="col">Jumlah Pemasukan</th>
+                  <th scope="col">Catatan</th>
+                  <th scope="col">Options</th>
+                </tr>
+              </thead>
+
+              {{-- <tbody>
+                @foreach ($mitra as $item)
+                <tr>
+                    <th scope="row"> {{ $loop->iteration }}</th>
+                    <td>{{ $item->nama_usaha }}</td>
+                    <td>{{ $item->created_at }}</td>
+                    <td>{{ $item->nama }}</td>
+                    <td>{{ $item->jumlah_pemasukan }}</td>
+                    <td>{{ $item->tanggal_masuk }}</td>
+               
+                    <td>
+                        <div class="row">
+                            <div class="btn-group">
+                                <a data-toggle="modal" data-target="#edit_kasmasuk{{ $item->kasmasuk_id }}" href="#" class="btn btn-secondary btn-sm"> <i class="fas fa-edit"></i></a>
+                               
+                               
+                                <form action="/del_pemasukan" method="post">
+                                    @csrf
+                                    <input hidden type="text" name="id" value="{{ $item->kasmasuk_id }}">
+                                    <button onclick="return confirm('apakah Anda akan menghapus data ini?')" class="btn btn-danger btn-sm"><i class="fas fa-trash" aria-hidden="true"></i></button>
+                                </form>
+                            </div>
                         </div>
-                        
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-
-                         <h4 class="header-title">Image Profil</h4>
-                        <p class="sub-header">
-                           Set your Profil Image.
-                        </p>
-
-                        <input type="file"  name="image" class="form-control" width="100" />
-                        
-                    </div>
-
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-info waves-effect waves-light">Ok, Simpan</button>
-        </div>
-
-
-
-    </div>
-</div>
-
-</div>
-
-</form>
-
-
-{{-- and add --}}
-                                
-                            @endforeach
-                            
+                    </td>
+            
+                  
+                   <form enctype="multipart/form-data" method="POST" action="/edit_kasmasuk">
+                    @csrf
+                    <div id="edit_kasmasuk{{ $item->kasmasuk_id }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                
+                                    <h4 class="modal-title">Edit Kas Masuk</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                </div>
+                                <div class="modal-body p-4">
+                
+                                   <input hidden type="text" name="kasmasuk_id" value="{{ $item->kasmasuk_id }}">
+                
+                                   <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="field-3" class="control-label">Nama Pemilik</label>
+                                            <select name="user_id" id="" class="form-control">
+                                                <option value="">pilih</option>
+                                                @foreach ($userman as $item)
+                                                <option value="{{ $item->user_id }}">{{ $item->nama }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="field-3" class="control-label">Nama Mitra</label>
+                                            <select name="mitra_id" id="" class="form-control">
+                                                <option value="">pilih</option>
+                                                @foreach ($mitra as $item)
+                                                <option value="{{ $item->mitra_id }}">{{ $item->nama_usaha }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="field-3" class="control-label">Jumlah Bayar</label>
+                                        <input type="text" value="{{ $item->jumlah_pemasukan }}" name="jumlah_pemasukan" required="required" class="form-control" id="field-3" placeholder="Juml Bayar">
+                                    </div>
+                                </div>
+                            </div>
                            
                             
-                        </tbody>
-                    </table>
-                </div>
-            </div> <!-- end card-body-->
-        </div> <!-- end card-->
-    </div> <!-- end col -->
+                            
+            
+                        
+            
+                            
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group no-margin">
+                                        <label for="field-7" class="control-label">Keterangan</label>
+                                        <textarea name="tanggal_masuk" required="required" class="form-control" id="field-7" placeholder="Enter Text">{{ $item->tanggal_masuk  }}</textarea>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+            
+                            <div class="row">
+                                <div class="col-md-12">
+            
+                                     <h4 class="header-title">Image Profil</h4>
+                                    <p class="sub-header">
+                                       Set your Profil Image.
+                                    </p>
+            
+                                    <input type="file" name="image" class="form-control" width="100" />
+                                    
+                                </div>
+                        </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-info waves-effect waves-light">Ok, Simpan</button>
+                        </div>
+                
+                
+        
+                    </div>
+                  </tr>
+                </form>
+                @endforeach
+              </tbody> --}}
+             
+        </table>
+       </div>
+    </div>
+
 </div>
 
 
-{{-- add form model --}}
-
-<form method="POST" action="/create_dokter" enctype="multipart/form-data">
+{{-- Section Modal add --}}
+<form method="POST" action="/tamba_kas" enctype="multipart/form-data">
     @csrf
-    <div id="add-dokter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-
+    <div id="AddMoney" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
 
-                    <h4 class="modal-title">New Doctor</h4>
+                    <h4 class="modal-title">Tamba Kas Keluar</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body p-4">
 
 
-                   <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="field-3" class="control-label">Nama Lengkap</label>
-                            <input type="text" name="nama"  class="form-control" id="field-3" placeholder="Nama Lengkap">
-                        </div>
-                    </div>
-                </div>
+                  
 
+                    
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="field-3" class="control-label">Username</label>
-                            <input type="text" name="username" required="required" class="form-control" id="field-3" placeholder="Username">
+                            <label for="field-3" class="control-label">Jumlah Keluar</label>
+                            <input type="text" name="jumlah_keluar" required="required" class="form-control" id="field-3" placeholder="Juml Keluar">
                         </div>
                     </div>
                 </div>
                
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="field-3" class="control-label">Password</label>
-                            <input type="password"  name="password" required="required" class="form-control" id="field-3" placeholder="Password">
-                        </div>
-                    </div>
-                </div>
+                
                 
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="field-1" class="control-label">Phone</label>
-                            <input type="text" maxlength="12" name="phone" class="form-control" id="field-1" required="required" placeholder="+62">
-                        </div>
-                    </div>
-                   
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="field-2"  class="control-label">Level</label>
-                            <select name="level" required="required" class="form-control">
-                                <option value="">Pilih</option>
-                                <option value="admin">Admin</option>
-                                <option value="dokter">Dokter</option>
-                                <option value="ceo">CEO</option>
-                               
-                            </select>
-                        </div>
-                    </div>
-                </div>
+            
 
                 
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group no-margin">
-                            <label for="field-7" class="control-label">Alamat Rumah</label>
-                            <textarea name="remember_token" required="required" class="form-control" id="field-7" placeholder="Enter Text"></textarea>
+                            <label for="field-7" class="control-label">Keterangan</label>
+                            <textarea name="catatan" required="required" class="form-control" id="field-7" placeholder="Enter Text"></textarea>
                         </div>
                         
                     </div>
@@ -308,18 +247,9 @@
                            Set your Profil Image.
                         </p>
 
-                        <input type="file" required  name="image" class="form-control" width="100" />
+                        <input type="file" name="image" disabled class="form-control" width="100" />
                         
                     </div>
-
-                
-                  
-                       
-
-
-
-               
-
             </div>
         </div>
         <div class="modal-footer">
@@ -330,13 +260,7 @@
 
 
     </div>
-</div>
 
-</div>
 
 </form>
-
-
-{{-- and add --}}
-
 @endsection

@@ -16,6 +16,12 @@
 </div>     
 <!-- end page title --> 
 
+@if (session('masuk'))
+<div class="alert alert-success" role="alert">
+    <i class="mdi mdi-check-all mr-2"></i>  {{ session('masuk') }}
+</div>
+@endif
+
 <div class="row">
     <div class="col-12">
         <div class="card-box">
@@ -59,42 +65,131 @@
                   <th scope="col">Waktu Pembayaraan</th>
                   <th scope="col">Nama Owner/Kabag</th>
                   <th scope="col">Jumlah Pemasukan</th>
+                  <th scope="col">Catatan</th>
                   <th scope="col">Options</th>
                 </tr>
               </thead>
 
               <tbody>
-                @foreach ($kasmasuk as $item)
+                @foreach ($mitra as $item)
                 <tr>
                     <th scope="row"> {{ $loop->iteration }}</th>
-                    <td>{{ $item->mitra_id }}</td>
-                    <td>{{ $item->tanggal_masuk }}</td>
-                    <td>{{ $item->user_id }}</td>
+                    <td>{{ $item->nama_usaha }}</td>
+                    <td>{{ $item->created_at }}</td>
+                    <td>{{ $item->nama }}</td>
                     <td>{{ $item->jumlah_pemasukan }}</td>
+                    <td>{{ $item->tanggal_masuk }}</td>
                
                     <td>
                         <div class="row">
                             <div class="btn-group">
-                                <a data-toggle="modal" data-target="#edit_userman{{ $item->user_id }}" href="#" class="btn btn-secondary btn-sm"> <i class="fas fa-edit"></i></a>
+                                <a data-toggle="modal" data-target="#edit_kasmasuk{{ $item->kasmasuk_id }}" href="#" class="btn btn-secondary btn-sm"> <i class="fas fa-edit"></i></a>
                                
                                
-                                <form action="/del_userman" method="post">
+                                <form action="/del_pemasukan" method="post">
                                     @csrf
-                                    <input hidden type="text" name="id" value="{{ $item->user_id }}">
+                                    <input hidden type="text" name="id" value="{{ $item->kasmasuk_id }}">
                                     <button onclick="return confirm('apakah Anda akan menghapus data ini?')" class="btn btn-danger btn-sm"><i class="fas fa-trash" aria-hidden="true"></i></button>
                                 </form>
                             </div>
                         </div>
                     </td>
-
-
-                  
-                    
+            
+                   {{-- blok Edit --}}
+                   <form enctype="multipart/form-data" method="POST" action="/edit_kasmasuk">
+                    @csrf
+                    <div id="edit_kasmasuk{{ $item->kasmasuk_id }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                
+                                    <h4 class="modal-title">Edit Kas Masuk</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                </div>
+                                <div class="modal-body p-4">
+                
+                                   <input hidden type="text" name="kasmasuk_id" value="{{ $item->kasmasuk_id }}">
+                
+                                   <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="field-3" class="control-label">Nama Pemilik</label>
+                                            <select name="user_id" id="" class="form-control">
+                                                <option value="">pilih</option>
+                                                @foreach ($userman as $item)
+                                                <option value="{{ $item->user_id }}">{{ $item->nama }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="field-3" class="control-label">Nama Mitra</label>
+                                            <select name="mitra_id" id="" class="form-control">
+                                                <option value="">pilih</option>
+                                                @foreach ($mitra as $item)
+                                                <option value="{{ $item->mitra_id }}">{{ $item->nama_usaha }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="field-3" class="control-label">Jumlah Bayar</label>
+                                        <input type="text" value="{{ $item->jumlah_pemasukan }}" name="jumlah_pemasukan" required="required" class="form-control" id="field-3" placeholder="Juml Bayar">
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            
+                            
+            
+                        
+            
+                            
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group no-margin">
+                                        <label for="field-7" class="control-label">Keterangan</label>
+                                        <textarea name="tanggal_masuk" required="required" class="form-control" id="field-7" placeholder="Enter Text">{{ $item->tanggal_masuk  }}</textarea>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+            
+                            <div class="row">
+                                <div class="col-md-12">
+            
+                                     <h4 class="header-title">Image Profil</h4>
+                                    <p class="sub-header">
+                                       Set your Profil Image.
+                                    </p>
+            
+                                    <input type="file" name="image" class="form-control" width="100" />
+                                    
+                                </div>
+                        </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-info waves-effect waves-light">Ok, Simpan</button>
+                        </div>
+                
+                
+        
                     </div>
-                    
-                    </form>
-
-                    {{-- End Blok Edit Userman --}}
+                </div>
+                
+                </div>
+                
+                </form>
+                   {{-- end edit --}}
 
                   </tr>
                 @endforeach
@@ -123,27 +218,38 @@
 
 
                    <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="field-3" class="control-label">Nama Pemilik</label>
-
-                            <select name="nama" id="" class="form-control">
-                                <option value="">pilih</option>
-                                @foreach ($userman as $item)
-                                <option value="{{ $item->user_id }}">{{ $item->nama }}</option>
-                                @endforeach
-                            </select>
-                            
-                            {{-- <input type="text" required name="nama"  class="form-control" id="field-3" placeholder="Nama Lengkap"> --}}
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-3" class="control-label">Nama Pemilik</label>
+                                <select name="user_id" id="" class="form-control">
+                                    <option value="">pilih</option>
+                                    @foreach ($userman as $item)
+                                    <option value="{{ $item->user_id }}">{{ $item->nama }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-3" class="control-label">Nama Mitra</label>
+                                <select name="mitra_id" id="" class="form-control">
+                                    <option value="">pilih</option>
+                                    @foreach ($sumber as $item)
+                                    <option value="{{ $item->mitra_id }}">{{ $item->nama_usaha }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
 
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="field-3" class="control-label">Jumlah Masuk</label>
-                            <input type="text" name="nip" required="required" class="form-control" id="field-3" placeholder="No. Pegawai">
+                            <label for="field-3" class="control-label">Jumlah Bayar</label>
+                            <input type="text" name="jumlah_pemasukan" required="required" class="form-control" id="field-3" placeholder="Juml Bayar">
                         </div>
                     </div>
                 </div>
@@ -158,7 +264,7 @@
                     <div class="col-md-12">
                         <div class="form-group no-margin">
                             <label for="field-7" class="control-label">Keterangan</label>
-                            <textarea name="alamat" required="required" class="form-control" id="field-7" placeholder="Enter Text"></textarea>
+                            <textarea name="tanggal_masuk" required="required" class="form-control" id="field-7" placeholder="Enter Text"></textarea>
                         </div>
                         
                     </div>

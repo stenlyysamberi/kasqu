@@ -17,7 +17,9 @@ class TblMitra extends Migration
            $table->bigIncrements('mitra_id');
            $table->integer('user_id')->nullable();
            $table->string('nama_usaha',50)->nullable();
-           $table->timestamps();
+           $table->date('updated_at');
+           $table->date('created_at');
+           //$table->foreign('user_id')->references('user_id')->on('tbl_user')->onDelete('cascade')->onUpdate('cascade');
        });
     }
 

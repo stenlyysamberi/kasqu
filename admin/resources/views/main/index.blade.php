@@ -464,14 +464,14 @@
                                 <div class="collapse" id="sidebarEcommerce">
                                     <ul class="nav-second-level">
                                         <li>
-                                            <a href="/user">Userman</a>
+                                            <a href="/user">User Man</a>
                                         </li>
                                         <li>
-                                            <a href="/masuk">Pemasukan</a>
+                                            <a href="/masuk">Kas Masuk</a>
                                         </li>
 
                                         <li>
-                                            <a href="/keluar">Pengeluaran</a>
+                                            <a href="/keluar">Kas Keluar</a>
                                         </li>
 
                                         <li>
