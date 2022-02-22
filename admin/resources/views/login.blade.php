@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Lock Screen | UBold - Responsive Admin Dashboard Template</title>
+        <title>{{ $title }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -47,29 +48,42 @@
                                         </a>
                                     </div>
                                 </div> --}}
+                                
+                                      
+                                @if (session('masuk'))
+                                <div class="alert alert-danger" role="alert">
+                                    <i class="mdi mdi-check-all mr-2"></i>  {{ session('masuk') }}
+                                </div>
+                             @endif
 
                                 <div class="text-center w-75 m-auto">
                                     <img src="../assets/images/users/logo.png" height="88" alt="user-image" class="rounded-circle shadow">
-                                    <h4 class="text-dark-50 text-center mt-3">Hi ! Welcome </h4>
+                                    <h4 class="text-dark-50 text-center mt-3">Hi ! Selamat Datang </h4>
                                     <p class="text-muted mb-4">Enter your password to access the admin.</p>
                                 </div>
 
 
-                                <form action="#">
-
+                                <form action="/login" method="POST">
+                                        @csrf
                                     <div class="form-group mb-3">
+                                      
+                                        
                                         <label for="password">Phone</label>
-                                        <input class="form-control" type="password" required="" name="phone" placeholder="Phone">
+                                        <input autofocus class="form-control" type="text" required="" name="phone" placeholder="Phone">
                                     </div>
 
                                     <div class="form-group mb-3">
                                         <label for="password">Password</label>
-                                        <input class="form-control" type="password" required="" name="code" placeholder="Enter your password">
+                                        <input class="form-control" type="password" required="" name="password" placeholder="Enter your password">
                                     </div>
 
                                     <div class="form-group mb-0 text-center">
                                         <button class="btn btn-secondary btn-block" type="submit"> Log In </button>
+                                       
+                                       
                                     </div>
+
+                                    
 
                                 </form>
 

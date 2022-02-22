@@ -20,7 +20,7 @@ class CreateModelPengeluaransTable extends Migration
             $table->string('catatan');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('user_id')->on('tbl_user')->onDelete('CASCADE')->onUpdate('CASCADE');
+            // $table->foreign('user_id')->references('user_id')->on('tbl_user')->onDelete('CASCADE')->onUpdate('CASCADE');
             
         });
     }
@@ -32,6 +32,6 @@ class CreateModelPengeluaransTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('model_pengeluarans');
+        Schema::dropIfExists('tbl_kaskeluar');
     }
 }

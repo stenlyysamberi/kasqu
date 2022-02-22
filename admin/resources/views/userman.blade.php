@@ -62,6 +62,7 @@
                 <tr>
                   <th scope="col">No</th>
                   <th scope="col">Nama Lengkap</th>
+                  <th scope="col">Profil</th>
                   <th scope="col">NIP</th>
                   <th scope="col">No.Hp</th>
                   <th scope="col">Alamat</th>
@@ -76,6 +77,9 @@
                 <tr>
                     <th scope="row"> {{ $loop->iteration }}</th>
                     <td>{{ $item->nama }}</td>
+                    <td class="table-user">
+                        <img src="{{ asset('storage/' . $item->gambar) }}" alt="table-user" class="mr-2 rounded-circle">
+                    </td>
                     <td>{{ $item->nip }}</td>
                     <td>{{ $item->phone }}</td>
                     <td>{{ $item->alamat }}</td>
@@ -261,6 +265,15 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="field-3" class="control-label">Password</label>
+                            <input type="password" name="password" required="required" class="form-control" id="field-3" placeholder="Password">
+                        </div>
+                    </div>
+                </div>
                
                 <div class="row">
                 <div class="col-md-12">
@@ -318,7 +331,7 @@
                            Set your Profil Image.
                         </p>
 
-                        <input type="file" name="image" class="form-control" width="100" />
+                        <input type="file" name="gambar" class="form-control" width="100" />
                         
                     </div>
             </div>

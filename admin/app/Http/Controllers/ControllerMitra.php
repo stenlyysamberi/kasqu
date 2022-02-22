@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ModelMitra;
-use App\UserMan;
+use App\User;
 use Illuminate\Http\Request;
 
 class ControllerMitra extends Controller
@@ -14,7 +14,7 @@ class ControllerMitra extends Controller
             "menu2" => "Contents",
             "menu3" => "Sumber Pemasukan",
             "title" => "Sumber Pemasukan",
-            "userman" => UserMan::all(),
+            "userman" => User::all(),
             'mitra' => ModelMitra::mitras()->get()
         ]);
     }

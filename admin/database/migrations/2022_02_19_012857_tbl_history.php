@@ -20,8 +20,8 @@ class TblHistory extends Migration
             $table->unsignedBigInteger('kaskeluar_id');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('user_id')->on('tbl_user')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('kasmasuk_id')->references('kasmasuk_id')->on('tbl_kasmasuk')->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('user_id')->references('user_id')->on('tbl_user')->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('kasmasuk_id')->references('kasmasuk_id')->on('tbl_kasmasuk')->onUpdate('cascade')->onDelete('cascade');
             // $table->foreign('kaskeluar_id')->references('kaskeluar_id')->on('tbl_kaskeluar')->onUpdate('cascade')->onDelete('cascade');
 
             

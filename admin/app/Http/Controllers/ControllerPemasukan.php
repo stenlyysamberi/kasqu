@@ -7,8 +7,10 @@ namespace App\Http\Controllers;
 use App\KasPemasukan as AppKasPemasukan;
 use App\ModelHistory;
 use App\ModelMitra;
+use App\User;
 use App\UserMan;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ControllerPemasukan extends Controller{
     public function index(){
@@ -17,7 +19,7 @@ class ControllerPemasukan extends Controller{
             "menu2" => "Pemasukan",
             "title" => "Pemasukan",
             "sumber" => ModelMitra::all(),
-            "userman"  => Userman::all(),
+            "userman"  => User::all(),
             'mitra'    => AppKasPemasukan::mitras()->get()
         ]);
     }
@@ -53,4 +55,25 @@ class ControllerPemasukan extends Controller{
         AppKasPemasukan::find($req->id)->delete();
         return redirect('/masuk')->with('masuk','kasmasuk has been deleted!');
     }
+
+    public function report_masuk(Request $req){
+
+        if(request()->from || request()->to){
+            $start_date = Carbon::parse(request()->from)->toDateTimeString();
+            $end_date = Carbon::parse(request()->to)->toDateTimeString();
+            // $data = AppKasPemasukan::whereBetween('created_at',[$start_date,$end_date])->get();
+            $data = AppKasPemasukan::relation($start_date,$end_date);
+        }else{
+            $data = AppKasPemasukan::mitras()->get();
+        }
+    
+        return view('report_masuk',[
+            "menu1" => "Beranda",
+            "menu2" => "Content",
+            "menu3" => "Dana Keluar",
+            "title" => "Dana Masuk",
+            "dana"  => $data
+        ]);
+        
+      }
 }

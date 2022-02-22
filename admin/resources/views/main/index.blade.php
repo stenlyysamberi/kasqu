@@ -303,8 +303,11 @@
     
                         <li class="dropdown notification-list topbar-dropdown">
                             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <img src="../assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
+                                <img src="{{ asset('storage/' . auth()->user()->gambar) }}" alt="user-image" class="rounded-circle">
                                 <span class="pro-user-name ml-1">
+                                   
+
+                                 
                          {{-- {{ auth()->user()->nama }}  --}}
                          <i class="mdi mdi-chevron-down"></i> 
                                 </span>
@@ -318,7 +321,7 @@
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <i class="fe-user"></i>
-                                    <span>My Account</span>
+                                    <span>{{ auth()->user()->nama }}</span>
                                 </a>
     
                                 
@@ -399,10 +402,10 @@
                             <div class="dropdown-menu user-pro-dropdown">
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                {{-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <i class="fe-user mr-1"></i>
                                     <span>My Account</span>
-                                </a>
+                                </a> --}}
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">

@@ -61,134 +61,109 @@
             <thead>
                 <tr>
                   <th scope="col">No</th>
-                  <th scope="col">Nama Usaha</th>
-                  <th scope="col">Waktu Pembayaraan</th>
-                  <th scope="col">Nama Owner/Kabag</th>
-                  <th scope="col">Jumlah Pemasukan</th>
+                  <th scope="col">Nama Petugas</th>
+                  <th scope="col">Jumlah Bayar</th>
+                  <th scope="col">Waktu Bayar</th>
                   <th scope="col">Catatan</th>
                   <th scope="col">Options</th>
                 </tr>
               </thead>
 
-              {{-- <tbody>
-                @foreach ($mitra as $item)
+              <tbody>
+                @foreach ($keluar as $item)
                 <tr>
                     <th scope="row"> {{ $loop->iteration }}</th>
-                    <td>{{ $item->nama_usaha }}</td>
-                    <td>{{ $item->created_at }}</td>
                     <td>{{ $item->nama }}</td>
-                    <td>{{ $item->jumlah_pemasukan }}</td>
-                    <td>{{ $item->tanggal_masuk }}</td>
-               
+                    <td>{{ $item->jumlah_keluar }}</td>
+                    <td>{{ $item->created_at }}</td>
+                    <td>{{ $item->catatan }}</td>
+
                     <td>
                         <div class="row">
                             <div class="btn-group">
-                                <a data-toggle="modal" data-target="#edit_kasmasuk{{ $item->kasmasuk_id }}" href="#" class="btn btn-secondary btn-sm"> <i class="fas fa-edit"></i></a>
-                               
-                               
-                                <form action="/del_pemasukan" method="post">
+                                <a data-toggle="modal" data-target="#edit_kasmasuk{{ $item->pengeluaran_id }}" href="#" class="btn btn-secondary btn-sm"> <i class="fas fa-edit"></i></a>
+                                <form action="/del_pengeluaran" method="post">
                                     @csrf
-                                    <input hidden type="text" name="id" value="{{ $item->kasmasuk_id }}">
+                                    <input type="text" hidden name="id" value="{{ $item->pengeluaran_id }}">
                                     <button onclick="return confirm('apakah Anda akan menghapus data ini?')" class="btn btn-danger btn-sm"><i class="fas fa-trash" aria-hidden="true"></i></button>
                                 </form>
                             </div>
                         </div>
                     </td>
-            
-                  
-                   <form enctype="multipart/form-data" method="POST" action="/edit_kasmasuk">
-                    @csrf
-                    <div id="edit_kasmasuk{{ $item->kasmasuk_id }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                
-                                    <h4 class="modal-title">Edit Kas Masuk</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                </div>
-                                <div class="modal-body p-4">
-                
-                                   <input hidden type="text" name="kasmasuk_id" value="{{ $item->kasmasuk_id }}">
-                
-                                   <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="field-3" class="control-label">Nama Pemilik</label>
-                                            <select name="user_id" id="" class="form-control">
-                                                <option value="">pilih</option>
-                                                @foreach ($userman as $item)
-                                                <option value="{{ $item->user_id }}">{{ $item->nama }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+
+                    <form enctype="multipart/form-data" method="POST" action="/edit_kaskeluar">
+                        @csrf
+                        <div id="edit_kasmasuk{{ $item->pengeluaran_id }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                    
+                                        <h4 class="modal-title">Edit Kas Keluar</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                     </div>
-                                </div>
-            
+                                    <div class="modal-body p-4">
+                    
+                                       <input hidden type="text" name="pengeluaran_id" value="{{ $item->pengeluaran_id }}">
+                    
+                                       <div class="row">
+                                       
+                                    </div>
+                
+                
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="field-3" class="control-label">Nama Mitra</label>
-                                            <select name="mitra_id" id="" class="form-control">
-                                                <option value="">pilih</option>
-                                                @foreach ($mitra as $item)
-                                                <option value="{{ $item->mitra_id }}">{{ $item->nama_usaha }}</option>
-                                                @endforeach
-                                            </select>
+                                            <label for="field-3" class="control-label">Jumlah Bayar</label>
+                                            <input type="text" value="{{ $item->jumlah_keluar }}" name="jumlah_keluar" required="required" class="form-control" id="field-3" placeholder="Juml Bayar">
                                         </div>
                                     </div>
                                 </div>
-            
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="field-3" class="control-label">Jumlah Bayar</label>
-                                        <input type="text" value="{{ $item->jumlah_pemasukan }}" name="jumlah_pemasukan" required="required" class="form-control" id="field-3" placeholder="Juml Bayar">
+                               
+                                
+                                
+                
+                            
+                
+                                
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group no-margin">
+                                            <label for="field-7" class="control-label">Keterangan</label>
+                                            <textarea name="catatan" required="required" class="form-control" id="field-7" placeholder="Enter Text">{{ $item->catatan }}</textarea>
+                                        </div>
+                                        
                                     </div>
                                 </div>
+                
+                                <div class="row">
+                                    <div class="col-md-12">
+                
+                                         <h4 class="header-title">Image Profil</h4>
+                                        <p class="sub-header">
+                                           Set your Profil Image.
+                                        </p>
+                
+                                        <input disabled type="file" name="image" class="form-control" width="100" />
+                                        
+                                    </div>
                             </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-info waves-effect waves-light">Ok, Simpan</button>
+                            </div>
+                    
+                    
+            
+                        </div>
+                    
                            
-                            
-                            
-            
-                        
-            
-                            
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group no-margin">
-                                        <label for="field-7" class="control-label">Keterangan</label>
-                                        <textarea name="tanggal_masuk" required="required" class="form-control" id="field-7" placeholder="Enter Text">{{ $item->tanggal_masuk  }}</textarea>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-            
-                            <div class="row">
-                                <div class="col-md-12">
-            
-                                     <h4 class="header-title">Image Profil</h4>
-                                    <p class="sub-header">
-                                       Set your Profil Image.
-                                    </p>
-            
-                                    <input type="file" name="image" class="form-control" width="100" />
-                                    
-                                </div>
-                        </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-info waves-effect waves-light">Ok, Simpan</button>
-                        </div>
-                
-                
-        
-                    </div>
-                  </tr>
-                </form>
-                @endforeach
-              </tbody> --}}
-             
+                    
+                    
+                    </form>
+               
+                        @endforeach
+              </tbody>
         </table>
        </div>
     </div>
@@ -197,14 +172,14 @@
 
 
 {{-- Section Modal add --}}
-<form method="POST" action="/tamba_kas" enctype="multipart/form-data">
+<form method="POST" action="/tamba_kaskeluar" enctype="multipart/form-data">
     @csrf
     <div id="AddMoney" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-
+                    <input hidden type="text" value="{{ auth()->user()->user_id }}" name="user_id">
                     <h4 class="modal-title">Tamba Kas Keluar</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>

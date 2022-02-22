@@ -3,6 +3,7 @@
 namespace App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use PhpParser\Node\Expr\Cast\String_;
 
 class KasPemasukan extends Model
 {
@@ -22,5 +23,13 @@ class KasPemasukan extends Model
         ->join('tbl_user','tbl_kasmasuk.user_id','=','tbl_user.user_id')
         ->join('tbl_mitra_kampus','tbl_kasmasuk.mitra_id','=','tbl_mitra_kampus.mitra_id');
         return $mitra;
+    }
+
+    static function relation(string $from, string $to){
+        $data = DB::table('tbl_kasmasuk')
+        ->join('tbl_user','tbl_kasmasuk.user_id','=','tbl_user.user_id')
+        ->join('tbl_mitra_kampus','tbl_kasmasuk.mitra_id','=','tbl_mitra_kampus.mitra_id')
+        ->whereBetween('tbl_kasmasuk.created_at',[$from,$to])->get();
+        return $data;
     }
 }

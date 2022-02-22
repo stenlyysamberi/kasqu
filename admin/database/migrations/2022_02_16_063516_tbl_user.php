@@ -20,8 +20,9 @@ class TblUser extends Migration
             $table->text('alamat');
             $table->string('nip',50)->nullable();
             $table->string('jenis_kelamin',10)->nullable();
-            $table->string('code',6)->nullable();
+            $table->text('password')->nullable();
             $table->string("level",20)->nullable();
+            $table->text("gambar")->nullable();
             
         });
     }
