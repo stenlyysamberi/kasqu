@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.BerandaActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/tolbar"
+        android:layout_marginBottom="12dp"
+        app:cardBackgroundColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginLeft="12dp"
+                android:id="@+id/tx1"
+                android:textStyle="bold"
+                android:textColor="@color/purple_700"
+                android:textSize="30dp"
+                android:text="Kasqu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_marginRight="12dp"
+                android:orientation="horizontal"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+<!--                <ImageView-->
+<!--                    android:layout_marginRight="12dp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/icon_cari"-->
+<!--                    app:tint="@color/dark" />-->
+
+                <ImageView
+                    android:src="@drawable/icon_akun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:tint="@color/dark" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:cardBackgroundColor="@color/purple_700"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp">
+
+                    <TextView
+                        android:id="@+id/saldo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/icon_more"
+                        android:drawableTint="@color/white"
+                        android:text="Rp.10.000"
+                        android:textColor="@color/white"
+                        android:textSize="30dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/saldo"
+                        android:text="you have a money today"
+                        android:textColor="@color/white" />
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/icon_more"
+                            android:drawableTint="@color/white"
+                            android:padding="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/icon_more"
+                            android:drawableTint="@color/white"
+                            android:padding="12dp" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:padding="12dp"
+                            android:text="1996"
+                            android:textColor="@color/white" />
+
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:src="@drawable/logo" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <GridLayout
+                android:layout_marginTop="12dp"
+                android:columnCount="2"
+                android:rowCount="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <FrameLayout
+                    android:layout_marginRight="5dp"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1">
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/isi_saldo"
+                        android:layout_margin="1dp"
+                        app:cardBackgroundColor="@color/orange"
+                        app:cardCornerRadius="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            android:padding="10dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:textSize="15dp"
+                                android:gravity="center_vertical"
+                                android:id="@+id/login_google"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:drawablePadding="12dp"
+                                android:drawableTint="@color/purple_700"
+                                android:drawableLeft="@drawable/ic_round_attach_money_24"
+                                android:text="Income"
+                                android:textColor="@color/purple_700"
+                                 />
+
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_marginLeft="5dp"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_margin="1dp"
+                        app:cardBackgroundColor="@color/hijau_muda"
+                        app:cardCornerRadius="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:padding="10dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textSize="15dp"
+                                android:gravity="center_vertical"
+                                android:drawableTint="@color/purple_700"
+                                android:textColor="@color/purple_700"
+                                android:drawableLeft="@drawable/icon_send"
+                                android:drawablePadding="12dp"
+                                android:layout_centerVertical="true"
+                                android:text="Spent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </FrameLayout>
+
+
+            </GridLayout>
+
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/purple_700"
+                android:textSize="20dp"
+                android:layout_marginTop="12dp"
+                android:text="Services"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textColor="@color/dark"
+                android:text="Service member menampilkan informasu sumber dana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_income"
+                android:layout_marginTop="12dp"
+                android:id="@+id/recy_mitra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/purple_700"
+                android:textSize="20dp"
+                android:layout_marginTop="12dp"
+                android:text="Money Income"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textColor="@color/dark"
+                android:text="update total income dana masuk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="12dp"
+                android:id="@+id/recy_income"
+                android:orientation="horizontal"
+                tools:listitem="@layout/item_income"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/purple_700"
+                android:textSize="20dp"
+                android:layout_marginTop="12dp"
+                android:text="Money Spent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textColor="@color/dark"
+                android:text="update total pengeluaran dana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="12dp"
+                android:id="@+id/recy_spent"
+                android:orientation="horizontal"
+                tools:listitem="@layout/item_income"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+<!--            <com.google.android.material.tabs.TabLayout-->
+<!--                app:tabIndicatorColor="@color/hijau_tua"-->
+<!--                app:tabTextColor="@color/purple_700"-->
+<!--                android:background="@color/white"-->
+<!--                android:id="@+id/tabLayout"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:flow_horizontalBias="0.5"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+<!--            </com.google.android.material.tabs.TabLayout>-->
+
+<!--            <androidx.viewpager2.widget.ViewPager2-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:id="@+id/viewpagerOrder"-->
+<!--                android:layout_height="match_parent"/>-->
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

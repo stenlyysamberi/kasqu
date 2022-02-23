@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Kasqu</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Tab layout are visible below toolbar with View pager, used to create swipeable views on. Tabs are designed to work with fragments. Use them to swipe fragments in view pager. In this article, we are going to show you how to implement material design tabs in your android app.
+After creating new project, open build.gradle of app level and add design support library because Tablayout is a part of Android Design Support Library:</string>
 </resources>
