@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (response.isSuccessful() && response.body()!=null){
                         if (response.body().getResult().equals("berhasil")){
-                            Toast.makeText(getApplicationContext(), "" + response.body().getResult(), Toast.LENGTH_SHORT).show();
+
                             Intent intent = new Intent(getApplicationContext(),BerandaActivity.class);
                             intent.putExtra("mobile", mobile_phone);
                             startActivity(intent);

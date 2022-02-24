@@ -18,12 +18,12 @@ public class MainActivity extends AppCompatActivity {
     Activity activity;
 
     ViewPager viewPager2;
-    int[] images = {R.drawable.img4,R.drawable.img4,R.drawable.img4};
-    String [] header = {"Selamat Datang di Jaki!","Bayar ini itu, dengan sekali Klik","Lebih Mudah Tampa Dompet"};
+    int[] images = {R.drawable.img4,R.drawable.money1,R.drawable.money2};
+    String [] header = {"Welcome to Kasqu!","What is gross total income?","Difference between Gross Total Income"};
     String [] dec    = {
-            "Aplikasi layanan Tiket yang siap bikin transaksi kamu jadi lebih mudah, aman dan menyenangkan",
-            "Jajan makanan hingga bayar Tiket? Semua beres dan makin mudah pake Jaki!",
-            "Kini bisa transaksi dan isi saldo langsung pakai kartu debit kamu"
+            "Take the instance of ‘gross total income’ and ‘total income’",
+            "The ‘gross total income’ (GTI) is the total income you earn by adding all heads of income!",
+            "To understand their difference in simple terms, look at the following formulae"
 
     };
     SliderAdapter adepter;

@@ -1,6 +1,7 @@
 package com.example.kasqu.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +10,9 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.kasqu.R;
@@ -22,6 +26,7 @@ import com.example.kasqu.model.Income;
 import com.example.kasqu.model.Main;
 import com.example.kasqu.model.Mitra;
 import com.example.kasqu.model.Spent;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.List;
@@ -30,13 +35,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BerandaActivity extends AppCompatActivity {
+public class BerandaActivity extends AppCompatActivity implements View.OnClickListener {
 
     EndPoint endPoint;
     RecyclerView recy_service,recy_income,recy_spent;
     private AdapterIncome adapterIncome;
     private AdapterSpent adapteSpent;
     private AdapterService adapterService;
+    //public View bottomSheetView;
+    CardView card_income;
+    View bottomSheetView;
+    BottomSheetDialog bottomSheetDialog;
+
 
 //    TabLayout tabLayout;
 //    ViewPager2 viewPager;
@@ -47,6 +57,12 @@ public class BerandaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beranda);
+        bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.sheet_benefit, (LinearLayout) findViewById(R.id.bennefit));
+
+        card_income = findViewById(R.id.card_income);
+        card_income.setOnClickListener(this);
+
 
         endPoint = Retrofit.getRetrofitInstance().create(EndPoint.class);
         Call<List<Main>> main = endPoint.mitra();
@@ -56,13 +72,12 @@ public class BerandaActivity extends AppCompatActivity {
 
                 if (response.isSuccessful() && response.body()!=null){
 
-                    Toast.makeText(getApplicationContext(), "berhasil", Toast.LENGTH_SHORT).show();
                    List<Main> s = response.body();
                    Log.d("data", s.toString());
 
                    inCOme(s.get(0).getIncome());
                    service(s.get(0).getMitra());
-                   spent(s.get(0).getSpent());
+//                 spent(s.get(0).getSpent());
 
                 }
 
@@ -116,16 +131,17 @@ public class BerandaActivity extends AppCompatActivity {
 //        });
     }
 
-    private  void inCOme(List<Income> incomes){
-        recy_income = findViewById(R.id.recy_income);
+    public void inCOme(List<Income> incomes){
+
+        recy_income = bottomSheetView.findViewById(R.id.recy_benefit);
         adapterIncome = new AdapterIncome(this, incomes);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recy_income.setLayoutManager(layoutManager);
         recy_income.setAdapter(adapterIncome);
     }
 
     private  void service(List<Mitra> mitra){
-        recy_service = findViewById(R.id.recy_mitra);
+        recy_service =  findViewById(R.id.recy_mitra);
         adapterService = new AdapterService(this, mitra);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recy_service.setLayoutManager(layoutManager);
@@ -133,10 +149,21 @@ public class BerandaActivity extends AppCompatActivity {
     }
 
     private  void spent(List<Spent> spents){
-        recy_spent = findViewById(R.id.recy_spent);
+//        recy_spent = findViewById(R.id.recy_spent);
         adapteSpent = new AdapterSpent(this, spents);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recy_spent.setLayoutManager(layoutManager);
         recy_spent.setAdapter(adapteSpent);
+    }
+
+
+
+    @Override
+    public void onClick(View view) {
+
+        bottomSheetDialog = new BottomSheetDialog(BerandaActivity.this,R.style.bottomSheetDialogTheme);
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
+
     }
 }

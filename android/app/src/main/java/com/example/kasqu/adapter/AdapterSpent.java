@@ -39,7 +39,7 @@ public class AdapterSpent extends RecyclerView.Adapter<AdapterSpent.mitraView> {
     public void onBindViewHolder(@NonNull AdapterSpent.mitraView holder, int position) {
         holder.nama_income.setText(incomes.get(position).getCatatan());
         holder.jumlah_income.setText(incomes.get(position).getJumlah());
-        Picasso.with(context).load("http://192.168.1.4:8000/storage/"+incomes.get(position).getGambar_petugas()).into(holder.imageView);
+//        Picasso.with(context).load("http://192.168.1.4:8000/storage/"+incomes.get(position).getGambar_petugas()).into(holder.imageView);
         //Toast.makeText(context.getApplicationContext(), "" + incomes.get(position).getGambar_store(), Toast.LENGTH_SHORT).show();
 
     }
@@ -54,7 +54,7 @@ public class AdapterSpent extends RecyclerView.Adapter<AdapterSpent.mitraView> {
         TextView jumlah_income,nama_income;
         public mitraView(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.img_store);
+//            imageView = itemView.findViewById(R.id.img_store);
             jumlah_income = itemView.findViewById(R.id.jumlah_store);
             nama_income = itemView.findViewById(R.id.nama_store);
         }
