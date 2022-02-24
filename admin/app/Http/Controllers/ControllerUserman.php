@@ -99,4 +99,35 @@ class ControllerUserman extends Controller{
         User::find($request->id)->delete();
         return redirect('/user')->with('user','userman has been deleted!');
     }
+
+
+    //blok API
+    public function login_api(Request $request){
+        $cre = $request->validate([
+            'phone' => 'required',
+            'password' =>'required'
+       ]);
+
+       if(Auth::attempt($cre)){
+            // $request->session()->regenerate();
+            return response()->json([
+                'result'   => 'berhasil',
+                'id'       => auth()->user()->user_id,
+                'nama'     => auth()->user()->nama
+            ]);
+        }else{
+            return response()->json([
+                'result'  => 'gagal',
+                'message' => '0'
+            ]);
+        }
+
+    }
+
+    public function fect_user(Request $request){
+        $user = User::where('user_id', $request->user_id)->first();
+        return response()->json(
+                $user
+        );
+    }
 }

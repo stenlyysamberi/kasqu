@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\KasPemasukan;
 use App\ModelMitra;
+use App\ModelPengeluaran;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -50,5 +52,20 @@ class ControllerMitra extends Controller
       ModelMitra::find($request->mitra_id)->update($request->all());
       $request->session()->flash("user", "update has been created!");
       return redirect('/sumber_pemasukan');
+    }
+
+
+
+    // request API
+    public function beranda(){
+        return response()->json ([
+            [
+            'mitra'  =>  ModelMitra::mitras()->get(),
+            'income' =>  KasPemasukan::mitras()->get(),
+            'spent'  =>  ModelPengeluaran::mitras()->get()
+            ]
+        ]);
+          
+        
     }
 }
