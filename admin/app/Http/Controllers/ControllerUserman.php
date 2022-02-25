@@ -78,8 +78,6 @@ class ControllerUserman extends Controller{
             'password'   => 'required'
         ]);
 
-      
-    
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
             return redirect()->intended('/beranda');
