@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kasqu.R;
@@ -29,6 +30,8 @@ import com.example.kasqu.model.Spent;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.tabs.TabLayout;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -72,8 +75,14 @@ public class BerandaActivity extends AppCompatActivity implements View.OnClickLi
 
                 if (response.isSuccessful() && response.body()!=null){
 
+                   Income income = new Income();
+
+
                    List<Main> s = response.body();
                    Log.d("data", s.toString());
+                   subtotal();
+    
+//                    Toast.makeText(getApplicationContext(), "" + subtotal(), Toast.LENGTH_SHORT).show();
 
                    inCOme(s.get(0).getIncome());
                    service(s.get(0).getMitra());
@@ -154,6 +163,15 @@ public class BerandaActivity extends AppCompatActivity implements View.OnClickLi
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recy_spent.setLayoutManager(layoutManager);
         recy_spent.setAdapter(adapteSpent);
+    }
+
+    private void subtotal(){
+        ArrayList<Integer> total = new ArrayList<>();
+        Income income = new Income();
+        for (int i = 0; i>total.size(); i++){
+            total.add(income.getJumlah());
+            Log.e("total", String.valueOf(total.get(i)));
+        }
     }
 
 

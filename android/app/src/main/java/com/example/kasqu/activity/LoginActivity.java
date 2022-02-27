@@ -17,6 +17,7 @@ import com.example.kasqu.R;
 import com.example.kasqu.internet.EndPoint;
 import com.example.kasqu.internet.Retrofit;
 import com.example.kasqu.model.MyResponse;
+import com.example.kasqu.session.SessionManager;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -32,10 +33,15 @@ public class LoginActivity extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private int RC_SIGN_IN;
 
+    SessionManager sessionManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        sessionManager = new SessionManager(getApplicationContext());
+
         cardlogin = findViewById(R.id.card_login);
 
         hp = findViewById(R.id.phone);
@@ -74,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void loginEmail(String mobile_phone, String password){
 
+
         try {
             EndPoint endpoint = Retrofit.getRetrofitInstance().create(EndPoint.class);
             Call<MyResponse> respon = endpoint.login(mobile_phone,password);
@@ -83,6 +90,9 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (response.isSuccessful() && response.body()!=null){
                         if (response.body().getResult().equals("berhasil")){
+                            int id = response.body().getId();
+                            String nama = response.body().getNama();
+                            sessionManager.create_session(id,nama);
 
                             Intent intent = new Intent(getApplicationContext(),BerandaActivity.class);
                             intent.putExtra("mobile", mobile_phone);

@@ -47,8 +47,6 @@
         </LinearLayout>
 
 
-
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,8 +74,9 @@
                 android:text="*"
                 android:textColor="@color/merahs" />
         </LinearLayout>
-        <EditText
 
+        <EditText
+            android:text="081224452338"
             android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -112,21 +111,21 @@
                 android:text="*"
                 android:textColor="@color/merahs" />
         </LinearLayout>
-        <EditText
 
+        <EditText
+            android:text="admin"
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:background="@drawable/tv_input"
             android:hint="12345678"
-            android:inputType="number"
+            android:inputType="textPassword"
             android:padding="15dp"
             android:textColor="@color/purple_700"
             android:textColorHint="@color/white_Dark"
             android:textSize="15dp"
             android:textStyle="bold" />
-
 
 
     </LinearLayout>

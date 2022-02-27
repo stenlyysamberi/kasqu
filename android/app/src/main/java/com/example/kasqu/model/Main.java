@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Main {
+public class Main extends Income {
     @SerializedName("mitra")
     @Expose
     private List<Mitra> mitra = null;
@@ -41,4 +41,8 @@ public class Main {
     public void setSpent(List<Spent> spent) {
         this.spent = spent;
     }
+
+
+
+
 }

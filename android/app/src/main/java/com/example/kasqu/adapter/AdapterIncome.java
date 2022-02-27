@@ -1,6 +1,7 @@
 package com.example.kasqu.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,8 +40,14 @@ public class AdapterIncome extends RecyclerView.Adapter<AdapterIncome.mitraView>
     @Override
     public void onBindViewHolder(@NonNull AdapterIncome.mitraView holder, int position) {
         holder.nama_income.setText(incomes.get(position).getNama_store());
-        holder.jumlah_income.setText(incomes.get(position).getJumlah());
+        holder.jumlah_income.setText(String.valueOf(incomes.get(position).getJumlah()));
         holder.tgl_income.setText(incomes.get(position).getTgl_income());
+
+
+
+
+//      Log.e("total", String.valueOf(total));
+
 //        Picasso.with(context).load("http://192.168.1.9:8000/storage/"+incomes.get(position).getGambar_store()).into(holder.imageView);
         //Toast.makeText(context.getApplicationContext(), "" + incomes.get(position).getGambar_store(), Toast.LENGTH_SHORT).show();
 

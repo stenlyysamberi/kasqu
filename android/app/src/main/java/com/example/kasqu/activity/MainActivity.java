@@ -10,12 +10,15 @@ import android.view.View;
 
 import com.example.kasqu.R;
 import com.example.kasqu.adapter.SliderAdapter;
+import com.example.kasqu.model.Main;
+import com.example.kasqu.session.SessionManager;
 
 import me.relex.circleindicator.CircleIndicator;
 
 public class MainActivity extends AppCompatActivity {
 
     Activity activity;
+    SessionManager sessionManager;
 
     ViewPager viewPager2;
     int[] images = {R.drawable.img4,R.drawable.money1,R.drawable.money2};
@@ -43,8 +46,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sing_up(View view) {
-        startActivity(new Intent(MainActivity.this,LoginActivity.class));
-        finish();
+
+        sessionManager = new SessionManager(getApplicationContext());
+        if (!sessionManager.is_login()){
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }else{
+            startActivity(new Intent(MainActivity.this,BerandaActivity.class));
+            finish();
+        }
+
+
+
     }
 
     public void btn_daftar(View view) {

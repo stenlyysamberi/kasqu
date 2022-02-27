@@ -23,7 +23,7 @@
 
         <ImageView
             android:layout_gravity="center"
-            android:src="@drawable/salah_password"
+            android:src="@drawable/forgot"
             android:layout_width="match_parent"
             android:layout_height="200dp"/>
 
@@ -46,7 +46,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/daftar"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             app:cardCornerRadius="20dp"
             app:cardBackgroundColor="@color/purple_700"
             android:layout_width="match_parent"
@@ -55,7 +55,7 @@
             <TextView
                 android:textAlignment="center"
                 android:padding="15dp"
-                android:text="Ok, Sip"
+                android:text="Tutup"
                 android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
