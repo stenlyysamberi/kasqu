@@ -27,11 +27,13 @@ import com.example.kasqu.model.Income;
 import com.example.kasqu.model.Main;
 import com.example.kasqu.model.Mitra;
 import com.example.kasqu.model.Spent;
+import com.example.kasqu.session.SessionManager;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.tabs.TabLayout;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
@@ -39,6 +41,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BerandaActivity extends AppCompatActivity implements View.OnClickListener {
+
+    SessionManager sessionManager;
 
     EndPoint endPoint;
     RecyclerView recy_service,recy_income,recy_spent;
@@ -183,5 +187,10 @@ public class BerandaActivity extends AppCompatActivity implements View.OnClickLi
         bottomSheetDialog.setContentView(bottomSheetView);
         bottomSheetDialog.show();
 
+    }
+
+    public void myAkun(View view) {
+        Intent intent = new Intent(getApplicationContext(),ProfilActivity.class);
+        startActivity(intent);
     }
 }

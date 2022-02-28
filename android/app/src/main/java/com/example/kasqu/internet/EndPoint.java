@@ -1,5 +1,7 @@
 package com.example.kasqu.internet;
 
+import com.example.kasqu.message.Message;
+import com.example.kasqu.model.Akun;
 import com.example.kasqu.model.Main;
 import com.example.kasqu.model.MyResponse;
 
@@ -19,11 +21,24 @@ public interface EndPoint {
             @Field("password") String password
     );
 
-
     @GET("beranda")
-    Call<List<Main>> mitra(
+    Call<List<Main>> mitra();
 
+    @FormUrlEncoded
+    @POST("fect_user")
+    Call<Akun> fect_user(
+            @Field("user_id") String id_user
     );
+
+    @FormUrlEncoded
+    @POST("edit_user")
+    Call<Message> edit_user(
+            @Field("user_id") String id,
+            @Field("nama") String nama,
+            @Field("alamat") String alamat,
+            @Field("phone") String phone
+    );
+
 
 
 }

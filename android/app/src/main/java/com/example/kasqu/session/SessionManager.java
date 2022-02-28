@@ -26,10 +26,10 @@ public class SessionManager {
         editor = pref.edit();
     }
 
-    public void create_session(int id, String uname){
+    public void create_session(String id, String nama){
         editor.putBoolean(is_login, true);
-        editor.putInt(kunci_id, id);
-        editor.putString(nama_lengkap,uname);
+        editor.putString(kunci_id,id);
+        editor.putString(nama_lengkap,nama);
         editor.commit();
     }
 
@@ -53,4 +53,6 @@ public class SessionManager {
         user.put(nama_lengkap,pref.getString(nama_lengkap,null));
         return user;
     }
+
+
 }

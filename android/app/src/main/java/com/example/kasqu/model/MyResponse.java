@@ -14,13 +14,13 @@ public class MyResponse {
 
     @SerializedName("id")
     @Expose
-    private int id;
+    private String id;
 
     @SerializedName("nama")
     @Expose
     private String nama;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

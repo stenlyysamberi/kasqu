@@ -90,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (response.isSuccessful() && response.body()!=null){
                         if (response.body().getResult().equals("berhasil")){
-                            int id = response.body().getId();
+                            String id = response.body().getId();
                             String nama = response.body().getNama();
                             sessionManager.create_session(id,nama);
 
