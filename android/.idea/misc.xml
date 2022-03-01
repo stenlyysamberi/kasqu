@@ -10,7 +10,8 @@
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable-v24/icon_cari.xml" value="0.17291666666666666" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable-v24/indikator_color.xml" value="0.14166666666666666" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable-v24/outline_cardview.xml" value="0.14166666666666666" />
-        <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable-v24/outline_red.xml" value="0.14947916666666666" />
+        <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable-v24/outline_red.xml" value="0.2" />
+        <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable/bg_shape_red.xml" value="0.14947916666666666" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable/ic_round_attach_money_24.xml" value="0.14947916666666666" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/activity_beranda.xml" value="0.25" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/activity_login.xml" value="0.25" />
@@ -24,7 +25,7 @@
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/item_service.xml" value="0.5" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/sheet_benefit.xml" value="0.33" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/sheet_salah_akun.xml" value="0.15" />
-        <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/toolbar_profile.xml" value="0.1" />
+        <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/toolbar_profile.xml" value="0.22" />
       </map>
     </option>
   </component>

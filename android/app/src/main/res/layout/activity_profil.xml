@@ -152,4 +152,22 @@
         </RelativeLayout>
     </ScrollView>
 
+    <RelativeLayout
+        android:onClick="logout"
+        android:layout_margin="12dp"
+        android:background="@drawable/bg_shape_red"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="Keluar"
+            android:textColor="@color/purple_700" />
+
+    </RelativeLayout>
+
 </RelativeLayout>

@@ -4,8 +4,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Retrofit {
     private static retrofit2.Retrofit retrofit;
+//192.168.1.9
+//    private static final String BASE_URL ="http://safe-temple-10558.herokuapp.com/api/";
 
-    private static final String BASE_URL ="http://safe-temple-10558.herokuapp.com/api/";
+    private static final String BASE_URL ="http://192.168.1.9:8000/api/";
 
     public static retrofit2.Retrofit getRetrofitInstance() {
         if (retrofit == null) {

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +34,7 @@ public class ProfilActivity extends AppCompatActivity {
     SessionManager sessionManager;
     private ActivityProfilBinding profil;
 //    private String ids;
-    CardView simpan;
+    RelativeLayout simpan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +57,7 @@ public class ProfilActivity extends AppCompatActivity {
 
                 String nama = String.valueOf(profil.namaLengkapProfilSaya.getText());
                 String alamat = String.valueOf(profil.alamatRumah.getText());
-                String phone = String.valueOf(profil.phoneSya);
+                String phone = String.valueOf(profil.phoneSya.getText());
 
                 edit_akun(ids,nama,alamat,phone);
             }
@@ -100,25 +101,29 @@ public class ProfilActivity extends AppCompatActivity {
         }else{
             try {
 
-                EndPoint endPoint = Retrofit.getRetrofitInstance().create(EndPoint.class);
-                Call<Message> as = endPoint.edit_user(id,nama,alamat,phone);
+                EndPoint s = Retrofit.getRetrofitInstance().create(EndPoint.class);
+                Call<Message> as = s.edit_user(id,nama,alamat,phone);
                 as.enqueue(new Callback<Message>() {
-                   @Override
-                   public void onResponse(Call<Message> call, Response<Message> response) {
-                       if (response.body().getResult().equals("berhasil")){
-                           Toast.makeText(getApplicationContext(), "has been connected", Toast.LENGTH_SHORT).show();
-                       }
-                   }
+                    @Override
+                    public void onResponse(Call<Message> call, Response<Message> response) {
+                        if (response.body().getResult().equals("berhasil")){
+                            Toast.makeText(getApplicationContext(), "users been created", Toast.LENGTH_SHORT).show();
+                        }
+                    }
 
-                   @Override
-                   public void onFailure(Call<Message> call, Throwable t) {
-                       Toast.makeText(getApplicationContext(), "" + t, Toast.LENGTH_SHORT).show();
-                   }
-               });
+                    @Override
+                    public void onFailure(Call<Message> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(), "onFailure Connection" + t, Toast.LENGTH_SHORT).show();
+                    }
+                });
 
             }catch (Exception e){
                 Toast.makeText(getApplicationContext(), "" + e, Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    public void logout(View view) {
+        sessionManager.logout();
     }
 }
