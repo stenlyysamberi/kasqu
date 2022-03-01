@@ -36,7 +36,8 @@ Route::get('/', function () {
         "menu2" => "Beranda",
         "title" => "Beranda"
     ]);
-})->middleware('auth');
+})->middleware('auth'); 
+// ->middleware('auth')
 
 Route::get('/beranda', function () {
     return view('beranda',[
@@ -45,6 +46,8 @@ Route::get('/beranda', function () {
         "title" => "Beranda"
     ]);
 })->middleware('auth');
+
+
 
 
 
@@ -73,10 +76,15 @@ Route::get('/report_keluar',[App\Http\Controllers\ControllerPengeluaran::class,'
 
 
 Route::post('/add_userman',[ControllerUserman::class,'store'])->middleware('auth');
+// ->middleware('auth')
 Route::post('/del_userman',[ControllerUserman::class,'hapus'])->middleware('auth');
+// ->middleware('auth')
 Route::post('/edit_userman',[ControllerUserman::class,'edit'])->middleware('auth');
+
 Route::get('/user',[ControllerUserman::class,'index'])->middleware('auth');
+// ->middleware('auth')
 Route::post('/logout',[ControllerUserman::class,'keluar'])->middleware('auth');
+// ->middleware('auth')
 
 
 // Route::post('/add_userman',[ControllerUserman::class,'store']);
