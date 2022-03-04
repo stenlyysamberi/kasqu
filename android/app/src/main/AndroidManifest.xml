@@ -20,6 +20,18 @@
         android:theme="@style/Theme.Kasqu"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.ConfirmActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.BuyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.MutasiActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.TransaksiActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.ProfilActivity"
             android:exported="true" />
         <activity

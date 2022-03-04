@@ -18,31 +18,23 @@ public class Main extends Income {
     @Expose
     private List<Spent> spent = null;
 
+    @SerializedName("mutasi_user")
+    @Expose
+    private List<Mutasi> mutasi_user = null;
+
     public List<Mitra> getMitra() {
         return mitra;
-    }
-
-    public void setMitra(List<Mitra> mitra) {
-        this.mitra = mitra;
     }
 
     public List<Income> getIncome() {
         return income;
     }
 
-    public void setIncome(List<Income> income) {
-        this.income = income;
-    }
-
     public List<Spent> getSpent() {
         return spent;
     }
 
-    public void setSpent(List<Spent> spent) {
-        this.spent = spent;
+    public List<Mutasi> getMutasi_user() {
+        return mutasi_user;
     }
-
-
-
-
 }

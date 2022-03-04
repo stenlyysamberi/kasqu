@@ -53,10 +53,10 @@
                 android:gravity="center_vertical|center"
                 android:textSize="15dp"
                 android:drawableTint="@color/white"
-                android:drawableLeft="@drawable/ic_baseline_keyboard_backspace_24"
+
                 android:id="@+id/total_benefit"
                 android:padding="15dp"
-                android:text="Kembali"
+                android:text="Tutup"
                 android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

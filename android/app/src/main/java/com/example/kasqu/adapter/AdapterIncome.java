@@ -1,21 +1,18 @@
 package com.example.kasqu.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kasqu.R;
 import com.example.kasqu.model.Income;
-import com.example.kasqu.model.Mitra;
-import com.squareup.picasso.Picasso;
+import com.example.kasqu.widget.ToRupiah;
 
 import java.util.List;
 
@@ -23,6 +20,7 @@ public class AdapterIncome extends RecyclerView.Adapter<AdapterIncome.mitraView>
 
     Context context;
     List<Income> incomes;
+    ToRupiah rp = new ToRupiah();
 
     public AdapterIncome(Context context, List<Income> incomes) {
         this.context = context;
@@ -40,7 +38,7 @@ public class AdapterIncome extends RecyclerView.Adapter<AdapterIncome.mitraView>
     @Override
     public void onBindViewHolder(@NonNull AdapterIncome.mitraView holder, int position) {
         holder.nama_income.setText(incomes.get(position).getNama_store());
-        holder.jumlah_income.setText(String.valueOf(incomes.get(position).getJumlah()));
+        holder.jumlah_income.setText(String.valueOf(rp.formatRupiah(incomes.get(position).getJumlah())));
         holder.tgl_income.setText(incomes.get(position).getTgl_income());
 
 

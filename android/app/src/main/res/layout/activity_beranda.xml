@@ -82,7 +82,7 @@
                         android:layout_height="wrap_content"
                         android:drawableRight="@drawable/icon_more"
                         android:drawableTint="@color/white"
-                        android:text="Rp.10.000"
+                        android:text="Rp.0"
                         android:textColor="@color/white"
                         android:textSize="30dp"
                         android:textStyle="bold" />
@@ -146,6 +146,7 @@
                 android:layout_height="wrap_content">
 
                 <FrameLayout
+                    android:onClick="mutasi_user"
                     android:layout_marginRight="5dp"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1">
@@ -171,8 +172,8 @@
                                 android:layout_centerVertical="true"
                                 android:drawablePadding="12dp"
                                 android:drawableTint="@color/purple_700"
-                                android:drawableLeft="@drawable/ic_round_attach_money_24"
-                                android:text="Income"
+                                android:drawableLeft="@drawable/round_history_toggle_off_24"
+                                android:text="History"
                                 android:textColor="@color/purple_700"
                                  />
 
@@ -191,6 +192,7 @@
                     android:layout_rowWeight="1">
 
                     <androidx.cardview.widget.CardView
+                        android:onClick="buys"
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="@color/hijau_muda"
                         app:cardCornerRadius="5dp"
@@ -207,10 +209,10 @@
                                 android:gravity="center_vertical"
                                 android:drawableTint="@color/purple_700"
                                 android:textColor="@color/purple_700"
-                                android:drawableLeft="@drawable/icon_send"
+                                android:drawableLeft="@drawable/ic_round_attach_money_24"
                                 android:drawablePadding="12dp"
                                 android:layout_centerVertical="true"
-                                android:text="Spent"
+                                android:text="Buys"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
 
@@ -235,17 +237,14 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:textSize="20dp"
                     android:textStyle="bold"
                     android:textColor="@color/purple_700"
-                    android:text="Services"
+                    android:text="Transaction"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
-                            <TextView
-                                android:textColor="@color/dark"
-                                android:text="Service member menampilkan informasi sumber dana"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
+
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:orientation="horizontal"
@@ -257,7 +256,8 @@
                                 android:layout_height="wrap_content"/>
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/card_income"
+                           android:onClick="income"
+                            android:background="@color/transparant"
                             android:layout_marginTop="12dp"
                             app:cardBackgroundColor="@color/white"
                             app:cardCornerRadius="10dp"
@@ -265,28 +265,37 @@
                             android:layout_height="wrap_content">
 
                             <LinearLayout
+                                android:layout_marginLeft="50dp"
                                 android:padding="12dp"
                                 android:orientation="vertical"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
-
                                 <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
                                     android:drawableTint="@color/purple_700"
                                     android:gravity="center_vertical"
+                                    android:text="Receive"
                                     android:textColor="@color/purple_700"
-                                    android:textStyle="bold"
-                                    android:text="Income"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"/>
+                                    android:textStyle="bold" />
 
                                 <TextView
                                     android:textColor="@color/dark"
-                                    android:text="show you the ‘total income’"
+                                    android:text="show you the ‘total receive"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"/>
 
                             </LinearLayout>
 
+                            <TextView
+                                android:layout_marginLeft="5dp"
+                                android:background="@drawable/bg_receive"
+                                android:padding="12dp"
+                                android:layout_gravity="left|center_vertical"
+                                android:drawableTint="@color/white"
+                                android:drawableLeft="@drawable/round_call_received_24"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"/>
                             <TextView
 
                                 android:drawableTint="@color/purple_700"
@@ -299,13 +308,16 @@
                         </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    app:cardCornerRadius="10dp"
+                    android:onClick="spent"
+                    android:background="@color/transparant"
                     android:layout_marginTop="12dp"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <LinearLayout
+                        android:layout_marginLeft="50dp"
                         android:padding="12dp"
                         android:orientation="vertical"
                         android:layout_width="wrap_content"
@@ -316,19 +328,31 @@
                             android:gravity="center_vertical"
                             android:textColor="@color/purple_700"
                             android:textStyle="bold"
-                            android:text="Spent"
+                            android:text="Send"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
 
                         <TextView
                             android:textColor="@color/dark"
-                            android:text="show you the ‘total Spent’"
+                            android:text="show you the ‘total send’"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
 
                     </LinearLayout>
 
                     <TextView
+
+                        android:layout_marginLeft="5dp"
+                        android:background="@drawable/bg_send"
+                        android:padding="12dp"
+                        android:layout_gravity="left|center_vertical"
+                        android:drawableTint="@color/white"
+                        android:drawableLeft="@drawable/round_trending_up_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+
+                    <TextView
+
                         android:drawableTint="@color/purple_700"
                         android:layout_marginRight="12dp"
                         android:layout_gravity="right|center_vertical"
@@ -341,66 +365,30 @@
 
             </LinearLayout>
 
-<!--            <TextView-->
-<!--                android:textStyle="bold"-->
-<!--                android:textColor="@color/purple_700"-->
-<!--                android:textSize="20dp"-->
-<!--                android:layout_marginTop="12dp"-->
-<!--                android:text="Services"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"/>-->
+            <LinearLayout
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/bg_calender"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_margin="12dp"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:text="Todays"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <CalendarView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
 
 
-
-
-
-
-
-
-<!--            <TextView-->
-<!--                android:textStyle="bold"-->
-<!--                android:textColor="@color/purple_700"-->
-<!--                android:textSize="20dp"-->
-<!--                android:layout_marginTop="12dp"-->
-<!--                android:text="Money Income"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"/>-->
-<!--            <TextView-->
-<!--                android:textColor="@color/dark"-->
-<!--                android:text="update total income dana masuk"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"/>-->
-<!--            <androidx.recyclerview.widget.RecyclerView-->
-<!--                android:layout_marginTop="12dp"-->
-<!--                android:id="@+id/recy_income"-->
-<!--                android:orientation="horizontal"-->
-<!--                tools:listitem="@layout/item_income"-->
-<!--                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"/>-->
-<!--            -->
-<!--            -->
-<!--            <TextView-->
-<!--                android:textStyle="bold"-->
-<!--                android:textColor="@color/purple_700"-->
-<!--                android:textSize="20dp"-->
-<!--                android:layout_marginTop="12dp"-->
-<!--                android:text="Money Spent"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"/>-->
-<!--            <TextView-->
-<!--                android:textColor="@color/dark"-->
-<!--                android:text="update total pengeluaran dana"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"/>-->
-<!--            <androidx.recyclerview.widget.RecyclerView-->
-<!--                android:layout_marginTop="12dp"-->
-<!--                android:id="@+id/recy_spent"-->
-<!--                android:orientation="horizontal"-->
-<!--                tools:listitem="@layout/item_income"-->
-<!--                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"/>-->
 
         </LinearLayout>
 

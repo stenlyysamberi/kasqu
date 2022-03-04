@@ -3,27 +3,42 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable-v24/bg_receive.xml" value="0.125" />
+        <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable-v24/bg_send.xml" value="0.125" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable-v24/bg_shape.xml" value="0.17291666666666666" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable-v24/bg_shape_bg.xml" value="0.14947916666666666" />
+        <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable-v24/bg_shape_bottom.xml" value="0.1453125" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable-v24/ic_baseline_keyboard_backspace_24.xml" value="0.14947916666666666" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable-v24/ic_baseline_navigation_24.xml" value="0.14947916666666666" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable-v24/icon_cari.xml" value="0.17291666666666666" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable-v24/indikator_color.xml" value="0.14166666666666666" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable-v24/outline_cardview.xml" value="0.14166666666666666" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable-v24/outline_red.xml" value="0.2" />
+        <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable/bg_banner_circle.xml" value="0.14947916666666666" />
+        <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable/bg_calender.xml" value="0.1421875" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable/bg_shape_red.xml" value="0.14947916666666666" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable/ic_round_attach_money_24.xml" value="0.14947916666666666" />
+        <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable/round_call_received_24.xml" value="0.1" />
+        <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable/round_history_toggle_off_24.xml" value="0.125" />
+        <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable/round_trending_down_24.xml" value="0.125" />
+        <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/drawable/round_trending_up_24.xml" value="0.125" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/activity_beranda.xml" value="0.25" />
+        <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/activity_buy.xml" value="0.18" />
+        <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/activity_confirm.xml" value="0.22" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/activity_mutasi.xml" value="0.25" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/activity_profil.xml" value="0.22" />
+        <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/activity_transaki.xml" value="0.115625" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/fragment_mitra.xml" value="0.1" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/fragment_send.xml" value="0.1" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/fragment_user.xml" value="0.33" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/item.xml" value="0.1" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/item_income.xml" value="0.25" />
+        <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/item_mutasi.xml" value="0.33" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/item_service.xml" value="0.5" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/sheet_benefit.xml" value="0.33" />
+        <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/sheet_btm_mutasi.xml" value="0.22" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/sheet_salah_akun.xml" value="0.15" />
         <entry key="..\:/Users/Stenly/Documents/WebApp/kasqu/android/app/src/main/res/layout/toolbar_profile.xml" value="0.22" />
       </map>

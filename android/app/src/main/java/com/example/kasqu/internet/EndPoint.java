@@ -3,6 +3,7 @@ package com.example.kasqu.internet;
 import com.example.kasqu.message.Message;
 import com.example.kasqu.model.Akun;
 import com.example.kasqu.model.Main;
+import com.example.kasqu.model.Mutasi;
 import com.example.kasqu.model.MyResponse;
 
 import java.util.List;
@@ -21,7 +22,8 @@ public interface EndPoint {
             @Field("password") String password
     );
 
-    @GET("beranda")
+    @FormUrlEncoded
+    @POST("beranda")
     Call<List<Main>> mitra();
 
     @FormUrlEncoded
@@ -39,6 +41,14 @@ public interface EndPoint {
             @Field("alamat") String alamat,
             @Field("phone") String phone
     );
+
+
+    @FormUrlEncoded
+    @POST("beranda")
+    Call<List<Main>> mutasi_user(
+            @Field("user_id") String id
+    );
+
 
 
 

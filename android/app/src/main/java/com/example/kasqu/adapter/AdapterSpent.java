@@ -11,9 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kasqu.R;
-import com.example.kasqu.model.Income;
 import com.example.kasqu.model.Spent;
-import com.squareup.picasso.Picasso;
+import com.example.kasqu.widget.ToRupiah;
 
 import java.util.List;
 
@@ -21,6 +20,7 @@ public class AdapterSpent extends RecyclerView.Adapter<AdapterSpent.mitraView> {
 
     Context context;
     List<Spent> incomes;
+    ToRupiah rp = new ToRupiah();
 
     public AdapterSpent(Context context, List<Spent> incomes) {
         this.context = context;
@@ -38,7 +38,7 @@ public class AdapterSpent extends RecyclerView.Adapter<AdapterSpent.mitraView> {
     @Override
     public void onBindViewHolder(@NonNull AdapterSpent.mitraView holder, int position) {
         holder.nama_income.setText(incomes.get(position).getCatatan());
-        holder.jumlah_income.setText(incomes.get(position).getJumlah());
+        holder.jumlah_income.setText("-" + rp.formatRupiah(Integer.valueOf(incomes.get(position).getJumlah())));
 //        Picasso.with(context).load("http://192.168.1.4:8000/storage/"+incomes.get(position).getGambar_petugas()).into(holder.imageView);
         //Toast.makeText(context.getApplicationContext(), "" + incomes.get(position).getGambar_store(), Toast.LENGTH_SHORT).show();
 
