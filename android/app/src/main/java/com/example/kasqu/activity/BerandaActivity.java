@@ -156,6 +156,7 @@ public class BerandaActivity extends AppCompatActivity {
     public void myAkun(View view) {
         Intent intent = new Intent(getApplicationContext(),ProfilActivity.class);
         startActivity(intent);
+        finish();
     }
 
 
@@ -164,21 +165,25 @@ public class BerandaActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), TransaksiActivity.class);
         intent.putExtra("jenis_mutasi", "Pemasukan");
         startActivity(intent);
+        finish();
     }
 
     public void spent(View view) {
         Intent intent = new Intent(getApplicationContext(), TransaksiActivity.class);
         intent.putExtra("jenis_mutasi", "Pengeluaran");
         startActivity(intent);
+        finish();
     }
 
     public void mutasi_user(View view) {
         Intent intent = new Intent(getApplicationContext(), MutasiActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void buys(View view) {
         Intent intent = new Intent(getApplicationContext(), BuyActivity.class);
         startActivity(intent);
+        finish();
     }
 }

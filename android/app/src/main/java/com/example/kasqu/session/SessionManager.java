@@ -18,6 +18,8 @@ public class SessionManager {
     private static final String is_login = "islogin";
     public static final String kunci_id = "id_user";
     public static final String nama_lengkap = "nama";
+    public static final String nama_mitras = "nama_mitra";
+    public static final String id_mitras = "id_mitra";
 
 
     public SessionManager(Context context) {
@@ -31,6 +33,11 @@ public class SessionManager {
         editor.putString(kunci_id,id);
         editor.putString(nama_lengkap,nama);
         editor.commit();
+    }
+
+    public void create_session_mitra(String id, String nama){
+        editor.putString(id_mitras,id);
+        editor.putString(nama_mitras,nama);
     }
 
     public boolean is_login() {
@@ -51,6 +58,8 @@ public class SessionManager {
         HashMap<String, String> user = new HashMap<String, String>();
         user.put(kunci_id, pref.getString(kunci_id, null));
         user.put(nama_lengkap,pref.getString(nama_lengkap,null));
+        user.put(nama_mitras,pref.getString(nama_mitras,null));
+        user.put(id_mitras,pref.getString(id_mitras,null));
         return user;
     }
 

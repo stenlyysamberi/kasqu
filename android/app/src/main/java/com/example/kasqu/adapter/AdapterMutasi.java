@@ -39,9 +39,9 @@ public class AdapterMutasi extends RecyclerView.Adapter<AdapterMutasi.mitraView>
     @Override
     public void onBindViewHolder(@NonNull AdapterMutasi.mitraView holder, int position) {
         holder.judul.setText(String.valueOf(rp.formatRupiah(incomes.get(position).getJumlah())));
-        holder.subjudul.setText("kasqu - " + incomes.get(position).getSub_judul());
+        holder.subjudul.setText("kasqu - " + incomes.get(position).getNama_usaha());
         holder.tglmutasi.setText(incomes.get(position).getTgl_mutasi());
-//        holder.statusmutasi.setText(incomes.get(position).getStatus());
+//      holder.statusmutasi.setText(incomes.get(position).getStatus());
     }
 
     @Override

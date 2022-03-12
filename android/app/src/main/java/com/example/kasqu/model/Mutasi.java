@@ -9,6 +9,14 @@ public class Mutasi {
     @Expose
     private int jumlah;
 
+    @SerializedName("nama_usaha")
+    @Expose
+    private String nama_usaha;
+
+    public String getNama_usaha() {
+        return nama_usaha;
+    }
+
     @SerializedName("nama")
     @Expose
     private String sub_judul;

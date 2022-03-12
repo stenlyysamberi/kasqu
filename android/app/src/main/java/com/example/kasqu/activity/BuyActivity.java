@@ -1,6 +1,9 @@
 package com.example.kasqu.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,15 +11,33 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kasqu.R;
+import com.example.kasqu.adapter.AdapterMitra;
+import com.example.kasqu.internet.EndPoint;
+import com.example.kasqu.internet.Retrofit;
+import com.example.kasqu.model.Mitra;
+import com.example.kasqu.session.SessionManager;
 import com.example.kasqu.widget.ToRupiah;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class BuyActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,12 +45,14 @@ public class BuyActivity extends AppCompatActivity implements View.OnClickListen
     private SparseArray<String> keyValues = new SparseArray<>();
     private InputConnection inputConnection;
     private EditText jumlah;
+    private TextView nama_mitra;
+    private AdapterMitra adapterMitra;
+    private String id_mitra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy);
-
 
         TextView satu;
         TextView dua;
@@ -46,17 +69,13 @@ public class BuyActivity extends AppCompatActivity implements View.OnClickListen
         final TextView[] setNominal = new TextView[1];
 
 
-
-        String rp = "Rp";
-
         jumlah = (EditText) findViewById(R.id.jumlah);
+        nama_mitra = findViewById(R.id.nama_mitra);
         //jumlah.setRawInputType(InputType.TYPE_CLASS_TEXT);
         //jumlah.setTextIsSelectable(true);
 
         InputConnection ic = jumlah.onCreateInputConnection(new EditorInfo());
         setInputConnection(ic);
-
-
 
         satu = (TextView) findViewById(R.id.satu);
         satu.setOnClickListener(this);
@@ -105,7 +124,11 @@ public class BuyActivity extends AppCompatActivity implements View.OnClickListen
         keyValues.put(R.id.sembilan, "9");
         keyValues.put(R.id.kosong, "0");
         keyValues.put(R.id.clear,"000");
+
+
     }
+
+
 
     @Override
     public void onClick(View view) {
@@ -130,19 +153,95 @@ public class BuyActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     public void konfirm(View view) {
-//        String text1 = "Sudah Makan";
-//        if (text1.equals(text1)){
-//            Toast.makeText(getApplicationContext(), "semangat ya my docter! <3", Toast.LENGTH_SHORT).show();
-//        }else {
-//            Log.e("message", "Hi, Docter ingat makan kwk");
-//        }
+
         String nominal = jumlah.getText().toString();
-        if (nominal.isEmpty()){
-            Toast.makeText(getApplicationContext(), "kosong", Toast.LENGTH_SHORT).show();
+        String mitra   = nama_mitra.getText().toString();
+        if (nominal.isEmpty() || mitra.isEmpty()){
+            Toast.makeText(getApplicationContext(), "Pastikan nominal bayar & mitra terinput!", Toast.LENGTH_SHORT).show();
         }else{
             Intent intent = new Intent(getApplicationContext(), ConfirmActivity.class);
             intent.putExtra("nominal", nominal);
+            intent.putExtra("nama_mitra", mitra);
+            intent.putExtra("id_mitra", id_mitra);
             startActivity(intent);
         }
     }
+
+
+    public void select_mitra(View view) {
+
+        SessionManager sessionManager;
+        sessionManager = new SessionManager(getApplicationContext());
+        HashMap<String, String> s = sessionManager.getUserDetails();
+        String ids = s.get(SessionManager.kunci_id);
+
+
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+                BuyActivity.this,R.style.bottomSheetDialogTheme);
+        View bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.sheet_btm_mitra, (LinearLayout) findViewById(R.id.sheet_mitra));
+
+        RecyclerView recyclerView;
+        StaggeredGridLayoutManager layoutManager;
+
+        recyclerView = bottomSheetView.findViewById(R.id.recy_mitra);
+        layoutManager = new StaggeredGridLayoutManager(1, LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+
+        EndPoint endPoint = Retrofit.getRetrofitInstance().create(EndPoint.class);
+        Call<List<Mitra>> mitra = endPoint.get_user_mitra(ids);
+        mitra.enqueue(new Callback<List<Mitra>>() {
+            @Override
+            public void onResponse(Call<List<Mitra>> call, Response<List<Mitra>> response) {
+                List<Mitra> mit = response.body();
+                adapterMitra = new AdapterMitra(mit, BuyActivity.this);
+                recyclerView.setAdapter(adapterMitra);
+                adapterMitra.notifyDataSetChanged();
+            }
+            @Override
+            public void onFailure(Call<List<Mitra>> call, Throwable t) {
+                Log.e("mitra", String.valueOf(t));
+            }
+        });
+
+        bottomSheetView.findViewById(R.id.btn_select_item).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (adapterMitra.getSelected() != null){
+                    show(adapterMitra.getSelected().getNama_usaha(), adapterMitra.getSelected().getMitra_id());
+                }else{
+                    show("tidak adalah pilihan","");
+                }
+
+                bottomSheetDialog.dismiss();
+            }
+        });
+
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
+
+    }
+
+    private void CreateList() {
+
+        ArrayList data = new ArrayList();
+
+        for (int i = 0; i < 20; i++){
+            Mitra mitra = new Mitra();
+            mitra.setNama_usaha(String.valueOf(i+1));
+            data.add(mitra);
+
+        }
+        adapterMitra.SetMitra(data);
+    }
+
+    private void show(String pesan, String id) {
+          nama_mitra.setText(pesan);
+          id_mitra = id;
+          Log.e("pesan", id_mitra);
+
+
+    }
+
 }

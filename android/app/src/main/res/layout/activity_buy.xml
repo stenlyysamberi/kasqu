@@ -41,31 +41,44 @@
     </LinearLayout>
 
 
-
     <LinearLayout
-        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"
         android:id="@+id/lyt_amount"
-        android:gravity="center|center_vertical"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:gravity="left"
+        android:orientation="vertical">
 
         <TextView
-            android:textColor="@color/dark"
-            android:text="Amount"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="Amount"
+            android:textColor="@color/dark" />
 
         <EditText
-            android:textColorHint="@color/dark"
             android:id="@+id/jumlah"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/transparant"
             android:hint="Rp0"
             android:textColor="@color/purple_700"
+            android:textColorHint="@color/dark"
             android:textSize="40dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
+
+        <TextView
+            android:textColor="@color/purple_700"
+            android:text=""
+            android:onClick="select_mitra"
+            android:drawableTint="@color/dark"
+            android:background="@color/transparant"
+            android:id="@+id/nama_mitra"
+            android:drawableRight="@drawable/ic_round_keyboard_arrow_down_24"
+            android:hint="SELECT TEXT"
+            android:textColorHint="@color/dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
