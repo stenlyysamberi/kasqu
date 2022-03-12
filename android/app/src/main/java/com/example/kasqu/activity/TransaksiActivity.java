@@ -174,4 +174,10 @@ public class TransaksiActivity extends AppCompatActivity {
 //        bottomSheetDialog.setContentView(bottomSheetView);
 //        bottomSheetDialog.show();
     }
+
+    public void back(View view) {
+        Intent intent = new Intent(TransaksiActivity.this, BerandaActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

@@ -244,4 +244,9 @@ public class BuyActivity extends AppCompatActivity implements View.OnClickListen
 
     }
 
+    public void back(View view) {
+        Intent intent = new Intent(BuyActivity.this, BerandaActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

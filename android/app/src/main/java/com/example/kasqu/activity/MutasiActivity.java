@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -78,5 +79,11 @@ public class MutasiActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapterMutasi);
 
+    }
+
+    public void back(View view) {
+        Intent intent = new Intent(MutasiActivity.this, BerandaActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

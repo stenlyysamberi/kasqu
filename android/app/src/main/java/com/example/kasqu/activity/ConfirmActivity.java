@@ -128,4 +128,9 @@ public class ConfirmActivity extends AppCompatActivity {
     }
 
 
+    public void back(View view) {
+        Intent intent = new Intent(ConfirmActivity.this, BuyActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

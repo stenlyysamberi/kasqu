@@ -39,7 +39,7 @@ public class AdapterService extends RecyclerView.Adapter<AdapterService.mitraVie
     public void onBindViewHolder(@NonNull AdapterService.mitraView holder, int position) {
         holder.nama_owner.setText(incomes.get(position).getNama_owner());
         holder.nama_store.setText(incomes.get(position).getNama_usaha());
-        Picasso.with(context).load("http://192.168.1.10:8000/storage/"+incomes.get(position).getGambar()).into(holder.imageView);
+        Picasso.with(context).load("http://192.168.42.136:8000/storage/"+incomes.get(position).getGambar()).into(holder.imageView);
 
 //        Picasso.with(context).load("http://safe-temple-10558.herokuapp.com//storage/"+incomes.get(position).getGambar()).into(holder.imageView);
         //Toast.makeText(context.getApplicationContext(), "" + incomes.get(position).getGambar_store(), Toast.LENGTH_SHORT).show();

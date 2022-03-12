@@ -8,59 +8,61 @@
     tools:context=".activity.TransaksiActivity">
 
     <LinearLayout
-        android:padding="12dp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
         <TextView
-            android:drawableTint="@color/black"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:gravity="center_vertical"
-            android:textStyle="bold"
-            android:drawablePadding="10dp"
-            android:drawableLeft="@drawable/ic_baseline_keyboard_backspace_24"
-            android:text="Back"
+            android:onClick="back"
             android:id="@+id/title_id"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_keyboard_backspace_24"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/black"
+            android:gravity="center_vertical"
+            android:text="Back"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
         <LinearLayout
-            android:layout_marginTop="12dp"
-            android:background="@drawable/bg_shape"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_shape">
 
             <LinearLayout
-                android:layout_margin="12dp"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:orientation="vertical">
 
                 <RelativeLayout
-                    android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp">
 
                     <TextView
-                        android:drawableTint="@color/purple_200"
-                        android:layout_marginRight="12dp"
-                        android:layout_centerInParent="true"
-                        android:layout_alignParentLeft="true"
                         android:id="@+id/card_icon"
-                        android:drawableLeft="@drawable/ic_round_credit_card_24"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="12dp"
+                        android:drawableLeft="@drawable/ic_round_credit_card_24"
+                        android:drawableTint="@color/purple_200" />
 
                     <TextView
-                        android:paddingLeft="10dp"
-                        android:layout_toRightOf="@+id/card_icon"
                         android:id="@+id/pilih_rekening"
-                        android:textColor="@color/dark"
-                        android:textSize="10dp"
-                        android:text="Pilih Mutasi"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/card_icon"
+                        android:paddingLeft="10dp"
+                        android:text="Pilih Mutasi"
+                        android:textColor="@color/dark"
+                        android:textSize="10dp" />
 
                     <TextView
                         android:id="@+id/tv_jenis_mutasi"
@@ -76,17 +78,17 @@
                         android:textSize="12dp" />
 
                     <View
-                        android:layout_below="@+id/tv_jenis_mutasi"
-                        android:background="@color/dark"
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"/>
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/tv_jenis_mutasi"
+                        android:background="@color/dark" />
 
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp">
 
                     <TextView
                         android:id="@+id/tgl_icon"
@@ -99,14 +101,14 @@
                         android:drawableTint="@color/purple_200" />
 
                     <TextView
-                        android:paddingLeft="10dp"
-                        android:layout_toRightOf="@+id/tgl_icon"
                         android:id="@+id/pilih_tanggal"
-                        android:textColor="@color/dark"
-                        android:textSize="10dp"
-                        android:text="Pilih Tanggal"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/tgl_icon"
+                        android:paddingLeft="10dp"
+                        android:text="Pilih Tanggal"
+                        android:textColor="@color/dark"
+                        android:textSize="10dp" />
 
                     <TextView
                         android:id="@+id/tv_tgl_mutasi"
@@ -126,22 +128,21 @@
 
                     <View
                         android:id="@+id/view_tgl"
-                        android:layout_below="@+id/tv_tgl_mutasi"
-                        android:background="@color/dark"
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"/>
-
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/tv_tgl_mutasi"
+                        android:background="@color/dark" />
 
 
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/btm_cari"
-                    android:layout_marginTop="12dp"
-                    android:background="@drawable/bg_shape_bottom"
-                    android:layout_below="@id/view_tgl"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view_tgl"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_shape_bottom">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -161,28 +162,28 @@
 
         <LinearLayout
 
-            android:background="@drawable/bg_shape"
-            android:orientation="vertical"
-            android:layout_marginTop="12dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_shape"
+            android:orientation="vertical">
 
             <TextView
-                android:textStyle="bold"
-                android:textColor="@color/purple_200"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginRight="12dp"
-                android:layout_marginLeft="12dp"
                 android:text="Transaction"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:textColor="@color/purple_200"
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recy_mutasi"
-                tools:listitem="@layout/item_income"
-                android:layout_margin="12dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                tools:listitem="@layout/item_income" />
 
         </LinearLayout>
 

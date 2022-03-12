@@ -8,6 +8,7 @@
     tools:context=".activity.ProfilActivity">
 
     <TextView
+        android:onClick="back"
         android:id="@+id/thely"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

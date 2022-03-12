@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -78,7 +79,7 @@ public class ProfilActivity extends AppCompatActivity {
 
                     if (response.isSuccessful() && response.body()!=null){
                         imageView = profil.imgProfil;
-                        Picasso.with(context).load("http://192.168.1.10/storage/"+response.body().getGambar()).into(imageView);
+                        Picasso.with(context).load("http://192.168.42.136:8000/storage/"+response.body().getGambar()).into(imageView);
                         nama = profil.namaSaya;
                         nama.setText(response.body().getNama());
                         address = profil.alamatSaya;
@@ -131,5 +132,12 @@ public class ProfilActivity extends AppCompatActivity {
 //
     public void logout(View view) {
         sessionManager.logout();
+        finish();
+    }
+
+    public void back(View view) {
+        Intent intent = new Intent(ProfilActivity.this, BerandaActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

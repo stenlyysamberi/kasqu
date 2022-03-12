@@ -13,6 +13,7 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:onClick="back"
             android:textStyle="bold"
             android:drawablePadding="12dp"
             android:id="@+id/thely"
