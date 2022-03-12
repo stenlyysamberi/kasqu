@@ -78,7 +78,7 @@ public class ProfilActivity extends AppCompatActivity {
 
                     if (response.isSuccessful() && response.body()!=null){
                         imageView = profil.imgProfil;
-                        Picasso.with(context).load("http://safe-temple-10558.herokuapp.com//storage/"+response.body().getGambar()).into(imageView);
+                        Picasso.with(context).load("http://192.168.1.10/storage/"+response.body().getGambar()).into(imageView);
                         nama = profil.namaSaya;
                         nama.setText(response.body().getNama());
                         address = profil.alamatSaya;

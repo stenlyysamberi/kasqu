@@ -22,6 +22,14 @@ public class Main extends Income {
     @Expose
     private List<Mutasi> mutasi_user = null;
 
+    @SerializedName("sisa_saldo")
+    @Expose
+    private List<SisaSaldo> sisa_saldo = null;
+
+    public List<SisaSaldo> getSisa_saldo() {
+        return sisa_saldo;
+    }
+
     public List<Mitra> getMitra() {
         return mitra;
     }

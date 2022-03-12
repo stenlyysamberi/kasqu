@@ -8,6 +8,8 @@ public class Income {
     @Expose
     private int jumlah;
 
+
+
     @SerializedName("updated_at")
     @Expose
     private String tgl_income;

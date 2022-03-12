@@ -100,7 +100,7 @@ public class TransaksiActivity extends AppCompatActivity {
     private  void spent(List<Spent> spents){
         recyclerView = findViewById(R.id.recy_mutasi);
         adapteSpent = new AdapterSpent(this, spents);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapteSpent);
     }

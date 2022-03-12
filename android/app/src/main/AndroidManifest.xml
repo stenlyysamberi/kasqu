@@ -20,6 +20,9 @@
         android:theme="@style/Theme.Kasqu"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.MainActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.ConfirmActivity"
             android:exported="true" />
         <activity
@@ -41,7 +44,7 @@
             android:name=".activity.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

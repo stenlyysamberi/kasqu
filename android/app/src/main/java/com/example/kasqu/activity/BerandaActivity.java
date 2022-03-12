@@ -18,6 +18,7 @@ import com.example.kasqu.internet.Retrofit;
 import com.example.kasqu.model.Income;
 import com.example.kasqu.model.Main;
 import com.example.kasqu.model.Mitra;
+import com.example.kasqu.model.SisaSaldo;
 import com.example.kasqu.widget.ToRupiah;
 import com.example.kasqu.session.SessionManager;
 
@@ -69,7 +70,7 @@ public class BerandaActivity extends AppCompatActivity {
                    List<Main> s = response.body();
                    Log.d("data", s.toString());
 
-                   subtotal(s.get(0).getIncome());//menampilkan total pemasukan
+                   subtotal(s.get(0).getSisa_saldo());//menampilkan total pemasukan
 
                    service(s.get(0).getMitra());//menampilkan data mitra
 
@@ -126,12 +127,12 @@ public class BerandaActivity extends AppCompatActivity {
 
 
 
-    private void subtotal(List<Income> total){
+    private void subtotal(List<SisaSaldo> total){
         ToRupiah rp = new ToRupiah();
         int sum = 0;
         List<Integer> jml = new ArrayList<Integer>();
         for (int i=0; i<total.size(); i++){
-            jml.add((total.get(i).getJumlah()));
+            jml.add((total.get(i).getSisa_saldo()));
         }
         Log.e("nilai", String.valueOf(jml));
 
