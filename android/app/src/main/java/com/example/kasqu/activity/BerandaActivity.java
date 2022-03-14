@@ -81,7 +81,7 @@ public class BerandaActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Main>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "" + t, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "error" + t, Toast.LENGTH_SHORT).show();
             }
         });
 //        tabLayout =findViewById(R.id.tabLayout);

@@ -97,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(),BerandaActivity.class);
                             intent.putExtra("mobile", mobile_phone);
                             startActivity(intent);
+                            finish();
 
                         }else{
                             gagal_login();
@@ -136,6 +137,6 @@ public class LoginActivity extends AppCompatActivity {
     public void back(View view) {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
-        finish();
+
     }
 }

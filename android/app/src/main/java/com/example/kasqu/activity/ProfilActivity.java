@@ -38,6 +38,7 @@ public class ProfilActivity extends AppCompatActivity {
     SessionManager sessionManager;
     ImageView imageView;
     private ActivityProfilBinding profil;
+    private String old_mages;
 //    private String ids;
     RelativeLayout simpan;
 
@@ -55,18 +56,6 @@ public class ProfilActivity extends AppCompatActivity {
         fetch_akun(ids);
 
 
-//        simpan = findViewById(R.id.simpan_profil);
-//        simpan.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                String nama = String.valueOf(profil.namaLengkapProfilSaya.getText());
-//                String alamat = String.valueOf(profil.alamatRumah.getText());
-//                String phone = String.valueOf(profil.phoneSya.getText());
-//
-//                edit_akun(ids,nama,alamat,phone);
-//            }
-//        });
     }
 
     private void fetch_akun(final String id){
@@ -79,13 +68,15 @@ public class ProfilActivity extends AppCompatActivity {
 
                     if (response.isSuccessful() && response.body()!=null){
                         imageView = profil.imgProfil;
-                        Picasso.with(context).load("http://192.168.42.136:8000/storage/"+response.body().getGambar()).into(imageView);
+                        Picasso.with(context).load("http://192.168.1.3:8000/storage/"+response.body().getGambar()).into(imageView);
                         nama = profil.namaSaya;
                         nama.setText(response.body().getNama());
                         address = profil.alamatSaya;
                         address.setText(response.body().getAlamat());
                         phone = profil.hpSaya;
                         phone.setText(response.body().getPhone());
+
+                        old_mages = response.body().getGambar();
 
                     }else{
                         Toast.makeText(getApplicationContext(), "connection failed" + response.errorBody(), Toast.LENGTH_SHORT).show();
@@ -101,35 +92,7 @@ public class ProfilActivity extends AppCompatActivity {
             Log.e("akunError", String.valueOf(e));
         }
     }
-//
-//    private void edit_akun (String id,String nama, String alamat, String phone){
-//        if (nama.isEmpty() || alamat.isEmpty() || phone.isEmpty()){
-//            Toast.makeText(getApplicationContext(), "data is empty!", Toast.LENGTH_SHORT).show();
-//        }else{
-//            try {
-//
-//                EndPoint s = Retrofit.getRetrofitInstance().create(EndPoint.class);
-//                Call<Message> as = s.edit_user(id,nama,alamat,phone);
-//                as.enqueue(new Callback<Message>() {
-//                    @Override
-//                    public void onResponse(Call<Message> call, Response<Message> response) {
-//                        if (response.body().getResult().equals("berhasil")){
-//                            Toast.makeText(getApplicationContext(), "users been created", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<Message> call, Throwable t) {
-//                        Toast.makeText(getApplicationContext(), "onFailure Connection" + t, Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//
-//            }catch (Exception e){
-//                Toast.makeText(getApplicationContext(), "" + e, Toast.LENGTH_SHORT).show();
-//            }
-//        }
-//    }
-//
+
     public void logout(View view) {
         sessionManager.logout();
         finish();
@@ -137,6 +100,17 @@ public class ProfilActivity extends AppCompatActivity {
 
     public void back(View view) {
         Intent intent = new Intent(ProfilActivity.this, BerandaActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void edit_profil(View view) {
+        //Toast.makeText(getApplicationContext(), "" + String.valueOf(old_mages), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(ProfilActivity.this, EditProfilActivity.class);
+        intent.putExtra("nama", String.valueOf(nama.getText()));
+        intent.putExtra("phone", String.valueOf(phone.getText()));
+        intent.putExtra("alamat", String.valueOf(address.getText()));
+        intent.putExtra("oldimage", String.valueOf(old_mages));
         startActivity(intent);
         finish();
     }

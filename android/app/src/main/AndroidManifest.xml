@@ -20,6 +20,9 @@
         android:theme="@style/Theme.Kasqu"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.EditProfilActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.MainActivity"
             android:exported="true" />
         <activity

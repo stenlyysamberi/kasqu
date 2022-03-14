@@ -7,7 +7,7 @@ public class Retrofit {
 
     //private static final String BASE_URL ="http://safe-temple-10558.herokuapp.com/api/";
 
-    private static final String BASE_URL ="http://192.168.42.136:8000/api/";
+    private static final String BASE_URL ="http://192.168.1.3:8000/api/";
 
     public static retrofit2.Retrofit getRetrofitInstance() {
         if (retrofit == null) {

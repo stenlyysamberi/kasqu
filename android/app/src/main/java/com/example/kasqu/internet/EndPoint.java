@@ -41,6 +41,8 @@ public interface EndPoint {
             @Field("nama") String nama,
             @Field("alamat") String alamat,
             @Field("phone") String phone
+//            @Field("gambar") String gambar,
+//            @Field("imageOld") String old_images
     );
 
 
